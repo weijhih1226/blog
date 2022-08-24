@@ -107,9 +107,9 @@ $ git commit -m "add test.md"
 緊接著，你在工作目錄中陸陸續續新增的檔案，要放到遠端儲存庫供他人使用，就必須先將遠端儲存庫加入路徑之中。Github儲存庫URL在頁面右上角的「code」當中，使用HTTPS或SSH都可以，將想要放置檔案的Github儲存庫URL透過git remote add加入即可。
 
 ```bash
-$ git remote add [遠端名稱] [遠端儲存庫URL]   # 將該遠端加入fetch跟push的路徑
+$ git remote add <遠端名稱> <遠端儲存庫URL>   # 將該遠端加入fetch跟push的路徑
 $ git remote -v     # 查看遠端分支名稱及路徑
-$ git remote remove [遠端名稱]  # 對應之移除指令
+$ git remote remove <遠端名稱>  # 對應之移除指令
 ```
 
 以遠端名稱為github為例：
@@ -121,7 +121,7 @@ github    https://github.com/weijhih1226/blog.git (fetch)
 github    https://github.com/weijhih1226/blog.git (push)
 
 $ git branch -a     # 查看所有分支名稱（本地及遠端）
-* master                  # 本地分支（目前的分支）
+* master                    # 本地分支（目前的分支）
   remotes/github/gh-pages   # 遠端分支
   remotes/github/main       # 遠端分支
 ```
@@ -131,7 +131,7 @@ $ git branch -a     # 查看所有分支名稱（本地及遠端）
 利用git checkout則可以切換分支。
 
 ```bash
-$ git checkout [分支名稱]
+$ git checkout <分支名稱>
 ```
 
 例如我們如果想將本地端的檔案同步到遠端的main分支上：
@@ -141,7 +141,7 @@ $ git checkout main
 ```
 
 ```bash
-$ git push [遠端名稱] [遠端分支名稱]
+$ git push <遠端名稱> <遠端分支名稱>
 ```
 
 例如：
@@ -153,8 +153,10 @@ $ git push github main
 ## 其他常用指令
 
 ```bash
-$ git branch -d [分支名稱]                      # 刪除本地分支
-$ git push [遠端名稱] --delete [遠端分支名稱]   # 刪除遠端分支
-$ git push [遠端名稱] :[遠端分支名稱]           # 刪除遠端分支
+$ git branch -d <分支名稱>                      # 刪除本地分支
+$ git push <遠端名稱> --delete <遠端分支名稱>   # 刪除遠端分支
+$ git push <遠端名稱> :<遠端分支名稱>           # 刪除遠端分支
+$ git clone <遠端專案URL> -b <分支名稱>
+
 
 ```
