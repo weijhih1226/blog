@@ -107,12 +107,12 @@ $ git commit -m "add test.md"
 緊接著，你在工作目錄中陸陸續續新增的檔案，要放到遠端儲存庫供他人使用，就必須先將遠端儲存庫加入路徑之中。Github儲存庫URL在頁面右上角的「code」當中，使用HTTPS或SSH都可以，將想要放置檔案的Github儲存庫URL透過git remote add加入即可。
 
 ```bash
-$ git remote add [遠端分支名稱] [遠端儲存庫URL]   # 將該遠端分支加入fetch跟push的路徑
+$ git remote add [遠端名稱] [遠端儲存庫URL]   # 將該遠端加入fetch跟push的路徑
 $ git remote -v     # 查看遠端分支名稱及路徑
-$ git remote remove [遠端分支名稱]  # 對應之移除指令
+$ git remote remove [遠端名稱]  # 對應之移除指令
 ```
 
-範例：
+以遠端名稱為github為例：
 
 ```bash
 $ git remote add github https://github.com/weijhih1226/blog.git
@@ -122,11 +122,11 @@ github    https://github.com/weijhih1226/blog.git (push)
 
 $ git branch -a     # 查看所有分支名稱（本地及遠端）
 * master                  # 本地分支（目前的分支）
-  remotes/main/gh-pages   # 遠端分支
-  remotes/main/main       # 遠端分支
+  remotes/github/gh-pages   # 遠端分支
+  remotes/github/main       # 遠端分支
 ```
 
-從上面git branch -a當中，可以看到因為目前本地端是在master分支底下，而遠端則在main底下有自動抓到2個分支。
+從上面git branch -a當中，可以看到因為目前本地端是在master分支底下，而遠端則在github底下有自動抓到2個分支。
 
 利用git checkout則可以切換分支。
 
@@ -142,6 +142,12 @@ $ git checkout main
 
 ```bash
 $ git push [遠端名稱] [分支名稱]
+```
+
+例如：
+
+```bash
+$ git push github main
 ```
 
 ## 其他常用指令
