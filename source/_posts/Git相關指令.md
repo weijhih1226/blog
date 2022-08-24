@@ -108,8 +108,9 @@ $ git commit -m "add test.md"
 
 ```bash
 $ git remote add <遠端名稱> <遠端儲存庫URL>   # 將該遠端加入fetch跟push的路徑
-$ git remote -v     # 查看遠端分支名稱及路徑
-$ git remote remove <遠端名稱>  # 對應之移除指令
+$ git remote -v                               # 查看遠端分支名稱及路徑
+$ git remote remove <遠端名稱>                # 對應之移除指令
+$ git remote rename <原遠端名稱> <新遠端名稱> # 更改遠端名稱
 ```
 
 以遠端名稱為github為例：
