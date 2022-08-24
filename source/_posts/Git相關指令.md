@@ -140,6 +140,10 @@ $ git checkout [分支名稱]
 $ git checkout main
 ```
 
+```bash
+$ git push [遠端名稱] [分支名稱]
+```
+
 ## 其他常用指令
 
 ```bash
