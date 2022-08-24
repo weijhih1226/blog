@@ -1,0 +1,145 @@
+---
+title: Git一二三，同步真簡單
+categories: [GitHub , Git]
+tags: [GitHub , Git]
+---
+
+Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。
+
+# Git指令全集
+## 將存放庫初始化
+
+首先必須要先將Git本地的存放庫初始化啦！
+
+到了想要透過Git監控的目錄git init，此時在目錄下會多出.git的隱藏目錄，這就相當於在VS code下在原始檔控制中的「將存放庫初始化」的功能。
+
+```bash
+$ git init  # 在當前目錄下創建.git以監控版更
+```
+
+## 查看當前git狀態
+
+先透過git status來查看當前git狀態。
+
+```bash
+$ git status  # 查看當前git狀態
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+```
+
+從輸出的內容，可以看到目前本地的分支名稱為master、沒有任何commit（提交），以及哪些檔案還沒被add（加入）追蹤（untracked）。
+
+目錄下可加入.gitignore檔案，裡面的內容可以加入不想同步追蹤的檔案名稱，以將這些檔案排除在git的檢查之外。
+
+目錄下加入.gitkeep則是強制git在檢查時，將空目錄也涵蓋進來。
+
+## 一、add（加入）untracked（未追蹤）檔案至暫存的變更
+
+當在目錄當中新增的檔案，只要是非空目錄、未被.gitignore排除檢查的檔案，或者並非是另一個含有.git的目錄，都會被列為檢查對象。
+
+利用VS code的原始檔控制，會自動偵測已變更的檔案（新增的檔案右方會顯示A(Add)、新增後變更的檔案會顯示M(Modified)），在「變更」欄的右方「+」號則可以將新增或變更的檔案加入到暫存的變更；在「暫存的變更」右方「-」號則是可以選擇取消變更的檔案，等修改好再加進去。
+
+如果利用指令列，則須透過git status來看各個檔案的情況。
+
+假設我們先新增一個test.md檔，這時候git status會列在untracked，於是我們git add：
+
+```bash
+$ git add test.md
+```
+
+這時候再git status，會看到檔案已被加入：
+
+```bash
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   test.md
+```
+
+如果再修改test.md檔案中的文字，再次git status則會看到：
+
+```bash
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   test.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   "test.md"
+```
+
+代表有一個版本已經加入暫存的變更等待提交，而另一個則是因為我們後來的修改而產生的版本，尚未加入提交的行列。
+
+> 若是目錄中含有其他git監測的目錄，則無法加入追蹤。
+
+```bash
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        themes/fluid/
+```
+
+像是Hexo部分目錄本身即含有git版控功能，因此部分目錄無法同步加入追蹤。
+
+## 二、新增訊息並commit（提交）
+
+當我們新增檔案或修改某些檔案裡的文字時，可以利用git commit分批提交更新訊息，把每一次的更新訊息記錄下來：
+
+```bash
+$ git commit -m "add test.md"
+```
+
+每次修改檔案之後，都要記得將檔案再度git add到要提交的行列當中。
+
+在提交之後，會發現本地端也新增了master分支，代表我們提交的內容會在我們本地的master分支裡。每修改某個檔案都可以在訊息欄做備註。但我們要推送的是遠端分支，而不是本地分支，要確定要提交上去的是哪一個分支。
+
+## 三、push（推送）至remote repository（遠端儲存庫）
+
+緊接著，你在工作目錄中陸陸續續新增的檔案，要放到遠端儲存庫供他人使用，就必須先將遠端儲存庫加入路徑之中。Github儲存庫URL在頁面右上角的「code」當中，使用HTTPS或SSH都可以，將想要放置檔案的Github儲存庫URL透過git remote add加入即可。
+
+```bash
+$ git remote add [遠端分支名稱] [遠端儲存庫URL]   # 將該遠端分支加入fetch跟push的路徑
+$ git remote -v     # 查看遠端分支名稱及路徑
+$ git remote remove [遠端分支名稱]  # 對應之移除指令
+```
+
+範例：
+
+```bash
+$ git remote add github https://github.com/weijhih1226/blog.git
+$ git remote -v
+github    https://github.com/weijhih1226/blog.git (fetch)
+github    https://github.com/weijhih1226/blog.git (push)
+
+$ git branch -a     # 查看所有分支名稱（本地及遠端）
+* master                  # 本地分支（目前的分支）
+  remotes/main/gh-pages   # 遠端分支
+  remotes/main/main       # 遠端分支
+```
+
+從上面git branch -a當中，可以看到因為目前本地端是在master分支底下，而遠端則在main底下有抓到2個分支。
+
+利用git checkout則可以切換分支。
+
+```bash
+$ git checkout [分支名稱]
+```
+
+例如我們如果想將本地端的檔案同步到遠端的main分支上：
+
+```bash
+$ git checkout main
+```
+
+## 其他常用指令
+
+```bash
+$ git branch -d [分支名稱]            # 刪除本地分支
+$ git push origin --delete [分支名稱] # 刪除遠端分支
+$ git push origin :[分支名稱]         # 刪除遠端分支
+
+```
