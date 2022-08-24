@@ -153,8 +153,8 @@ $ git push github main
 ## 其他常用指令
 
 ```bash
-$ git branch -d [分支名稱]            # 刪除本地分支
-$ git push origin --delete [分支名稱] # 刪除遠端分支
-$ git push origin :[分支名稱]         # 刪除遠端分支
+$ git branch -d [分支名稱]                      # 刪除本地分支
+$ git push [遠端名稱] --delete [遠端分支名稱]   # 刪除遠端分支
+$ git push [遠端名稱] :[遠端分支名稱]           # 刪除遠端分支
 
 ```
