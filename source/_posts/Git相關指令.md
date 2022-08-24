@@ -132,6 +132,7 @@ $ git branch -a     # 查看所有分支名稱（本地及遠端）
 
 ```bash
 $ git checkout <分支名稱>
+$ git checkout -b <新的分支名稱>
 ```
 
 例如我們如果想將本地端的檔案同步到遠端的main分支上：
@@ -153,10 +154,11 @@ $ git push github main
 ## 其他常用指令
 
 ```bash
-$ git branch -d <分支名稱>                      # 刪除本地分支
-$ git push <遠端名稱> --delete <遠端分支名稱>   # 刪除遠端分支
-$ git push <遠端名稱> :<遠端分支名稱>           # 刪除遠端分支
-$ git clone <遠端專案URL> -b <分支名稱>
-
+$ git branch <分支名稱>                             # 建立本地分支
+$ git branch -d <分支名稱>                          # 刪除本地分支
+$ git push <遠端名稱> --delete <遠端分支名稱>       # 刪除遠端分支
+$ git push <遠端名稱> :<遠端分支名稱>               # 刪除遠端分支
+$ git clone <遠端專案URL> -b <分支名稱>             # 複製遠端分支
+$ git pull <遠端名稱> <遠端分支名稱>:<本地分支名稱> # git fetch + git merge
 
 ```
