@@ -126,7 +126,7 @@ $ git branch -a     # 查看所有分支名稱（本地及遠端）
   remotes/main/main       # 遠端分支
 ```
 
-從上面git branch -a當中，可以看到因為目前本地端是在master分支底下，而遠端則在main底下有抓到2個分支。
+從上面git branch -a當中，可以看到因為目前本地端是在master分支底下，而遠端則在main底下有自動抓到2個分支。
 
 利用git checkout則可以切換分支。
 
