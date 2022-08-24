@@ -141,7 +141,7 @@ $ git checkout main
 ```
 
 ```bash
-$ git push [遠端名稱] [分支名稱]
+$ git push [遠端名稱] [遠端分支名稱]
 ```
 
 例如：
