@@ -91,6 +91,9 @@ Untracked files:
 
 ```bash
 $ git commit -m "add test.md"
+[github 1da2962] revise Git相關指令.md
+ 0 file changed, 1 insertions(+)
+ create mode 100644 "test.md"
 ```
 
 每次修改檔案之後，都要記得將檔案再度git add到要提交的行列當中。
