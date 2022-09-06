@@ -6,11 +6,27 @@ tags: [Linux]
 
 # Linux 指令功能全集
 
-## 系統啟動、監看
+## 系統啟動、管理、監看
+
+管理Systemd的各種服務，可利用 `systemctl` 來操作。
 
 ```bash
-$ systemctl 
+$ systemctl 操作指令 服務名稱[.service]
+$ systemctl                     # 查詢目前運行中服務
+$ systemctl status nginx        # 顯示服務狀態
+$ systemctl start nginx         # 啟動服務
+$ systemctl stop nginx          # 停止服務
+$ systemctl restart nginx       # 重新啟動服務
+$ systemctl reload nginx        # 重新導入服務
+$ systemctl enable nginx        # 開機自動啟動服務
+$ systemctl disable nginx       # 開機不自動啟動服務
+$ systemctl is-active nginx     # 目前是否執行服務
+$ systemctl is-enabled nginx    # 開機是否自動啟動服務
 $ journalctl 
+```
+
+```bash
+$ systemctl list-unit-files --type service -all
 ```
 
 ## 更換Shell
