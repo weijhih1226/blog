@@ -14,7 +14,7 @@ class Person:
     id = 0  # 類別屬性(class attribute)
 
     # 建構式
-    def __init__(self, name=None, age=None, gender='X'):
+    def __init__(self, name='未命名', age=None, gender='未知'):
         self.name = name        # 實例／資料屬性(instance/data attribute)
         self.age = age
         self.gender = gender
@@ -57,3 +57,10 @@ class NewString:
     def __str__(self):
         return 'string'
 ```
+
+## 斷言(Assertion)
+
+
+## 參考資料
+- https://docs.google.com/document/d/1QKmxsHHiL-ywRXtzX3cKTQMrPMPZ8KoX_yWwJlyzquo/edit
+- https://docs.google.com/document/d/1370fsW9a9YBS6QGaMLqzrY9GnDI9p_f1NXkvjtkbamk/edit

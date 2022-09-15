@@ -47,3 +47,38 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 ```
+
+## Linux系統根目錄介紹
+
+- /bin
+  - binary程式所在目錄
+
+- /boot
+  - 系統啟動核心文件
+
+- /dev
+  - 系統設備文件
+
+- /etc
+  - 系統及應用軟體的配置文件
+  - /etc/passwd - 記錄用戶訊息
+
+- /home
+  - 所有使用者的個人文件
+
+- /lib
+  - 共享函式庫
+  - 類似Windows系統之動態函式庫(.dll)
+
+- /lib64
+  - 64位元系統之共享函式庫
+
+- /lost+found
+  - 保存遺失文件
+
+- /media
+  - 可移動設備的掛載目錄
+
+- /mnt
+  - 掛載設備目錄
+
