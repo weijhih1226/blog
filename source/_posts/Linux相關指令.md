@@ -32,6 +32,8 @@ $ systemctl list-unit-files --type service -all
 ## 更換Shell
 
 ```bash
+$ printf "%s\n" $SHELL  # 印出當前shell
+$ cat /etc/shells        # 列出所有可用shell
 $ yum install zsh
 $ chsh -s $(which zsh) $(whoami)
 
