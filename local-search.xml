@@ -87,6 +87,31 @@
   
   
   <entry>
+    <title>Docker常用相關指令</title>
+    <link href="/blog/2022/08/24/Docker%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/"/>
+    <url>/blog/2022/08/24/Docker%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Docker-指令功能全集"><a href="#Docker-指令功能全集" class="headerlink" title="Docker 指令功能全集"></a>Docker 指令功能全集</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker ps                                 <span class="hljs-comment"># 查看各Container使用狀態（ID、NAME）</span><br>$ docker inspect &lt;Container ID|NAME&gt;        <span class="hljs-comment"># 檢查某Container的狀態（進入點、執行狀態及其他詳細資料）</span><br>$ docker stats &lt;Container ID|NAME&gt;          <span class="hljs-comment"># 查看各Container的CPU、記憶體及網路使用</span><br>$ docker <span class="hljs-built_in">exec</span> &lt;Container ID|NAME&gt; [COMMAND] <span class="hljs-comment"># 在外部向Container內執行指令</span><br>$ docker logs &lt;Container ID|NAME&gt;           <span class="hljs-comment"># 將Container內的輸出顯示到螢幕上</span><br>$ docker service <span class="hljs-built_in">ls</span>                         <span class="hljs-comment"># 列出Service狀態</span><br>$ docker service logs &lt;Service ID|NAME&gt;     <span class="hljs-comment"># 將Service內的輸出顯示到螢幕上</span><br></code></pre></td></tr></table></figure><p>因Docker可能裝在root權限底下，如沒有root使用Docker的權限，請在各指令前加sudo！</p><h2 id="查看各Container使用狀態"><a href="#查看各Container使用狀態" class="headerlink" title="查看各Container使用狀態"></a>查看各Container使用狀態</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker ps<br>$ docker ps -a  <span class="hljs-comment"># 查看所有Container使用狀態</span><br>CONTAINER ID    IMAGE                   COMMAND CREATED     STATUS      PORTS                               NAMES<br>c7ee35c5de98    127.0.0.1:5000/*:3.3.0  <span class="hljs-string">&quot;/…&quot;</span>    7 days ago  Up 7 days   0.0.0.0:8002-&gt;8000/tcp, :::8002-&gt;8000/tcp  qpesums_web<br></code></pre></td></tr></table></figure><p>Container的使用狀態會列出Container ID、所使用的IMAGE（映像檔）位置、啟動容器之後會執行的COMMAND（指令）、哪時候被CREATED、目前的STATUS、對應到的PORTS（連接埠），以及Container的NAMES（名稱）。</p><p>若後面不加任何options僅會列出正在運行的Container。</p><h2 id="查看各Container的CPU、記憶體及網路使用"><a href="#查看各Container的CPU、記憶體及網路使用" class="headerlink" title="查看各Container的CPU、記憶體及網路使用"></a>查看各Container的CPU、記憶體及網路使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker stats &lt;Container ID|NAME&gt;<br>$ docker stats --no-stream          <span class="hljs-comment"># 不滾動顯示</span><br></code></pre></td></tr></table></figure><h2 id="在外部向Container內執行指令"><a href="#在外部向Container內執行指令" class="headerlink" title="在外部向Container內執行指令"></a>在外部向Container內執行指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker <span class="hljs-built_in">exec</span><br>Usage: docker <span class="hljs-built_in">exec</span> [OPTIONS] CONTAINER COMMAND [ARG...]<br>$ docker <span class="hljs-built_in">exec</span> -it &lt;Container ID|NAME&gt; bash<br></code></pre></td></tr></table></figure><p>表示進入Container後第一個執行的是bash介面。</p><h2 id="列出Docker服務並查詢服務狀態"><a href="#列出Docker服務並查詢服務狀態" class="headerlink" title="列出Docker服務並查詢服務狀態"></a>列出Docker服務並查詢服務狀態</h2><h3 id="列出Docker服務"><a href="#列出Docker服務" class="headerlink" title="列出Docker服務"></a>列出Docker服務</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker service <span class="hljs-built_in">ls</span><br>ID              NAME        MODE    REPLICAS    IMAGE                   PORTS<br>zo97osyy73we    qpeplus     global  3/3         127.0.0.1:5000/*:3.3.0  *:8000-&gt;8000/tcp<br></code></pre></td></tr></table></figure><p>將會列出各個服務的ID、NAME（名稱）、MODE（模式）、REPLICAS（複本）、所使用到的IMAGE（映像檔），以及所對應到的PORTS（連接埠）。</p><h3 id="查詢服務狀態"><a href="#查詢服務狀態" class="headerlink" title="查詢服務狀態"></a>查詢服務狀態</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker service logs &lt;ID|NAME&gt;<br></code></pre></td></tr></table></figure><h2 id="查看Swarm-Nodes"><a href="#查看Swarm-Nodes" class="headerlink" title="查看Swarm Nodes"></a>查看Swarm Nodes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker node <span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure><p>再利用查到的ID或名稱去查詢該服務狀態。</p><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="＜補充說明＞"><a href="#＜補充說明＞" class="headerlink" title="＜補充說明＞"></a>＜補充說明＞</h2><h3 id="好用的流程畫圖小工具"><a href="#好用的流程畫圖小工具" class="headerlink" title="好用的流程畫圖小工具"></a>好用的流程畫圖小工具</h3><ul><li><a href="https://app.diagrams.net/">https://app.diagrams.net</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Git一二三，同步真簡單</title>
     <link href="/blog/2022/08/24/Git%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/"/>
     <url>/blog/2022/08/24/Git%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/</url>
@@ -108,31 +133,6 @@
       <tag>GitHub</tag>
       
       <tag>Git</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Docker常用相關指令</title>
-    <link href="/blog/2022/08/24/Docker%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/"/>
-    <url>/blog/2022/08/24/Docker%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/</url>
-    
-    <content type="html"><![CDATA[<h1 id="Docker-指令功能全集"><a href="#Docker-指令功能全集" class="headerlink" title="Docker 指令功能全集"></a>Docker 指令功能全集</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker ps                                 <span class="hljs-comment"># 查看各Container使用狀態（ID、NAME）</span><br>$ docker inspect &lt;Container ID|NAME&gt;        <span class="hljs-comment"># 檢查某Container的狀態（進入點、執行狀態及其他詳細資料）</span><br>$ docker stats &lt;Container ID|NAME&gt;          <span class="hljs-comment"># 查看各Container的CPU、記憶體及網路使用</span><br>$ docker <span class="hljs-built_in">exec</span> &lt;Container ID|NAME&gt; [COMMAND] <span class="hljs-comment"># 在外部向Container內執行指令</span><br>$ docker logs &lt;Container ID|NAME&gt;           <span class="hljs-comment"># 將Container內的輸出顯示到螢幕上</span><br>$ docker service <span class="hljs-built_in">ls</span>                         <span class="hljs-comment"># 列出Service狀態</span><br>$ docker service logs &lt;Service ID|NAME&gt;     <span class="hljs-comment"># 將Service內的輸出顯示到螢幕上</span><br></code></pre></td></tr></table></figure><p>因Docker可能裝在root權限底下，如沒有root使用Docker的權限，請在各指令前加sudo！</p><h2 id="查看各Container使用狀態"><a href="#查看各Container使用狀態" class="headerlink" title="查看各Container使用狀態"></a>查看各Container使用狀態</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker ps<br>$ docker ps -a  <span class="hljs-comment"># 查看所有Container使用狀態</span><br>CONTAINER ID    IMAGE                   COMMAND CREATED     STATUS      PORTS                               NAMES<br>c7ee35c5de98    127.0.0.1:5000/*:3.3.0  <span class="hljs-string">&quot;/…&quot;</span>    7 days ago  Up 7 days   0.0.0.0:8002-&gt;8000/tcp, :::8002-&gt;8000/tcp  qpesums_web<br></code></pre></td></tr></table></figure><p>Container的使用狀態會列出Container ID、所使用的IMAGE（映像檔）位置、啟動容器之後會執行的COMMAND（指令）、哪時候被CREATED、目前的STATUS、對應到的PORTS（連接埠），以及Container的NAMES（名稱）。</p><p>若後面不加任何options僅會列出正在運行的Container。</p><h2 id="查看各Container的CPU、記憶體及網路使用"><a href="#查看各Container的CPU、記憶體及網路使用" class="headerlink" title="查看各Container的CPU、記憶體及網路使用"></a>查看各Container的CPU、記憶體及網路使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker stats &lt;Container ID|NAME&gt;<br>$ docker stats --no-stream          <span class="hljs-comment"># 不滾動顯示</span><br></code></pre></td></tr></table></figure><h2 id="在外部向Container內執行指令"><a href="#在外部向Container內執行指令" class="headerlink" title="在外部向Container內執行指令"></a>在外部向Container內執行指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker <span class="hljs-built_in">exec</span><br>Usage: docker <span class="hljs-built_in">exec</span> [OPTIONS] CONTAINER COMMAND [ARG...]<br>$ docker <span class="hljs-built_in">exec</span> -it &lt;Container ID|NAME&gt; bash<br></code></pre></td></tr></table></figure><p>表示進入Container後第一個執行的是bash介面。</p><h2 id="列出Docker服務並查詢服務狀態"><a href="#列出Docker服務並查詢服務狀態" class="headerlink" title="列出Docker服務並查詢服務狀態"></a>列出Docker服務並查詢服務狀態</h2><h3 id="列出Docker服務"><a href="#列出Docker服務" class="headerlink" title="列出Docker服務"></a>列出Docker服務</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker service <span class="hljs-built_in">ls</span><br>ID              NAME        MODE    REPLICAS    IMAGE                   PORTS<br>zo97osyy73we    qpeplus     global  3/3         127.0.0.1:5000/*:3.3.0  *:8000-&gt;8000/tcp<br></code></pre></td></tr></table></figure><p>將會列出各個服務的ID、NAME（名稱）、MODE（模式）、REPLICAS（複本）、所使用到的IMAGE（映像檔），以及所對應到的PORTS（連接埠）。</p><h3 id="查詢服務狀態"><a href="#查詢服務狀態" class="headerlink" title="查詢服務狀態"></a>查詢服務狀態</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker service logs &lt;ID|NAME&gt;<br></code></pre></td></tr></table></figure><h2 id="查看Swarm-Nodes"><a href="#查看Swarm-Nodes" class="headerlink" title="查看Swarm Nodes"></a>查看Swarm Nodes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker node <span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure><p>再利用查到的ID或名稱去查詢該服務狀態。</p><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="＜補充說明＞"><a href="#＜補充說明＞" class="headerlink" title="＜補充說明＞"></a>＜補充說明＞</h2><h3 id="好用的流程畫圖小工具"><a href="#好用的流程畫圖小工具" class="headerlink" title="好用的流程畫圖小工具"></a>好用的流程畫圖小工具</h3><ul><li><a href="https://app.diagrams.net/">https://app.diagrams.net</a></li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>Docker</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Docker</tag>
       
     </tags>
     
