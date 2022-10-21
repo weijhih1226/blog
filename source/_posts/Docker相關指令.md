@@ -73,9 +73,15 @@ $ docker node ls
 
 再利用查到的ID或名稱去查詢該服務狀態。
 
-## 
+## 移除多餘容器(container)、網路(network)、映像(image)、數據卷(volume)
 
-## ＜補充說明＞
-### 好用的流程畫圖小工具
+```console
+$ docker container prune        # 移除未用容器
+$ docker network prune          # 移除未用網路
+$ docker image prune            # 移除未用映像
+$ docker volume prune           # 移除未用數據卷
+$ docker system prune           # 移除所有(Docker 17.06.0前包含數據卷)
+$ docker system prune --volumes # 移除所有包含數據卷
+```
 
- - https://app.diagrams.net
+[OPTIONS]有`-a`及`-f`。
