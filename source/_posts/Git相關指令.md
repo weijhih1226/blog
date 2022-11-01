@@ -155,12 +155,14 @@ $ git push github main
 ## 其他常用指令
 
 ```bash
-$ git branch <分支名稱>                             # 建立本地分支
-$ git branch -d <分支名稱>                          # 刪除本地分支
-$ git push <遠端名稱> --delete <遠端分支名稱>       # 刪除遠端分支
-$ git push <遠端名稱> :<遠端分支名稱>               # 刪除遠端分支
-$ git clone <遠端專案URL> -b <分支名稱>             # 複製遠端分支
-$ git pull <遠端名稱> <遠端分支名稱>:<本地分支名稱> # git fetch + git merge
+$ git branch <分支名稱>                               # 建立本地分支
+$ git branch -d <分支名稱>                            # 刪除本地分支
+$ git branch <-m|--move> [<舊分支>] <新分支>          # 移動／更名分支
+$ git branch <-M|--move --force> [<舊分支>] <新分支>  # 強制移動／更名分支
+$ git push <遠端名稱> --delete <遠端分支名稱>         # 刪除遠端分支
+$ git push <遠端名稱> :<遠端分支名稱>                 # 刪除遠端分支
+$ git clone <遠端專案URL> -b <分支名稱>               # 複製遠端分支
+$ git pull <遠端名稱> <遠端分支名稱>:<本地分支名稱>   # git fetch + git merge
 ```
 
 ### 關於git組態
