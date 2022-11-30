@@ -15,9 +15,10 @@ MAIN.MINOR.PATCH (e.g., Python 3.11.0, conda 22.9.0)
 
 ### conda相關
 ```console
-$ conda --version   # 檢視目前conda版本
-$ conda --help      # 查看conda指令說明文件
-$ conda info        # 查看當下工作環境設定
+$ conda --version                           # 檢視目前conda版本
+$ conda --help                              # 查看conda指令說明文件
+$ conda info                                # 查看當下工作環境設定
+$ conda config --add channels conda-forge   # 增加套件下載通道至.condarc
 ```
 
 ### 套件相關
