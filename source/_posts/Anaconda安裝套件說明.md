@@ -2,32 +2,53 @@
 title: Anaconda安裝套件說明
 categories: [Anaconda , Python]
 tags: [Anaconda , Python]
+updated: 2022/11/30 16:00
 ---
 
 ## 基本指令
 
 裝完後預設工作環境為base。
 
+### 版號說明
+
+MAIN.MINOR.PATCH (e.g., Python 3.11.0, conda 22.9.0)
+
 ### conda相關
 ```console
 $ conda --version   # 檢視目前conda版本
 $ conda --help      # 查看conda指令說明文件
+$ conda info        # 查看當下工作環境設定
 ```
 
 ### 套件相關
 ```console
-$ conda list                            # 列出該工作環境下所有套件
-$ conda update --all                    # 更新全部套件
-$ conda remove -n <環境名稱> <套件名稱> # 移除指定工作環境下之套件
+  -e, --export > 檔案名稱   # 輸出檔案
+  -n, --name 環境名稱
+  -p, --prefix 環境路徑
+  --json                    # 輸出成json檔
+```
+
+```console
+$ conda list                                # 列出當下工作環境下所有套件
+$ conda list -n <環境名稱>                  # 列出該工作環境下所有套件
+$ conda list [正規表示式]                   # 列出當下工作環境下部分套件
+$ conda list -e > <檔案名稱>                # 輸出給conda create --file
+$ conda update <套件名稱>                   # 更新指定套件
+$ conda update --all                        # 更新全部套件
+$ conda remove <套件名稱>                   # 移除當下工作環境下之套件
+$ conda remove -n <環境名稱> <套件名稱>     # 移除指定工作環境下之套件
 ```
 
 ### 虛擬工作環境相關
 ```console
-$ conda create -n <環境名稱> <套件名稱=版本>    # 建立新的工作環境
-$ conda remove -n <環境名稱> --all              # 移除指定工作環境
-$ conda env list                                # 列出有哪些工作環境
-$ conda activate [環境名稱]                     # 啟動工作環境，未指定預設為base
-$ conda deactivate                              # 停用工作環境
+$ conda create -n <環境名稱> <套件名稱=版本>        # 建立新的工作環境
+$ conda remove -n <環境名稱> <套件名稱>             # 移除指定工作環境下之套件
+$ conda remove -n <環境名稱> --all                  # 移除指定工作環境
+$ conda rename -n <原環境名稱> <新環境名稱>         # 更名指定工作環境
+$ conda env list                                    # 列出有哪些工作環境
+$ conda env export -n <環境名稱> -f <環境名稱>.yml  # 輸出該工作環境套件列表
+$ conda activate [環境名稱]                         # 啟動工作環境，未指定預設為base
+$ conda deactivate                                  # 停用工作環境
 ```
 
 建立新的工作環境，可自行指定安裝某Python版本，例如：
@@ -92,3 +113,7 @@ $ conda activate <環境名稱>
 ```
 
 這一步非常關鍵，否則會導致遷移失敗。至此，conda環境遷移結束。
+
+## 參考資料
+
+- https://medium.com/datainpoint/python-essentials-conda-quickstart-1f1e9ecd1025

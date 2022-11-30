@@ -2,17 +2,20 @@
 title: Linux常用相關指令
 categories: [Linux]
 tags: [Linux]
+updated: 2022/11/30 16:00
 ---
 
 # Linux 指令功能全集
 
 ## 系統啟動、管理、監看
+### Systemctl：管理systemd服務
 
 管理Systemd的各種服務，可利用 `systemctl` 來操作。
 
 ```bash
 $ systemctl 操作指令 服務名稱[.service]
 $ systemctl                     # 查詢目前運行中服務
+$ systemctl -n --lines=整數     # 顯示列數
 $ systemctl status nginx        # 顯示服務狀態
 $ systemctl start nginx         # 啟動服務
 $ systemctl stop nginx          # 停止服務
@@ -22,18 +25,49 @@ $ systemctl enable nginx        # 開機自動啟動服務
 $ systemctl disable nginx       # 開機不自動啟動服務
 $ systemctl is-active nginx     # 目前是否執行服務
 $ systemctl is-enabled nginx    # 開機是否自動啟動服務
-$ journalctl 
 ```
 
 ```bash
 $ systemctl list-unit-files --type service -all
 ```
 
+### Journalctl：查詢systemd日誌
+
+```bash
+$ systemctl status systemd-journald.service   # 顯示journal service狀態
+```
+
+```bash
+$ journalctl -u 服務名稱[.service]            # 只顯示指定systemd單元的訊息
+$ journalctl _SYSTEMD_UNIT=服務名稱[.service] # 等同-u
+$ journalctl -f                               # 顯示並更新最近的日誌訊息
+$ 
+```
+
+## 修改自動登出時間
+
+```bash
+$ echo $TMOUT     # 查詢自動登出時間
+```
+
+修改`/etc/profile`或`/etc/bashrc`或`~/.bash_profile`或`~/.bashrc`：
+
+```bash
+TMOUT=600   # 表示10分鐘之後自動登出
+TMOUT=      # 表示關閉自動登出
+```
+
+重新啟動bash配置：
+
+```
+$ source ~/.bash_profile
+```
+
 ## 更換Shell
 
 ```bash
-$ printf "%s\n" $SHELL  # 印出當前shell
-$ cat /etc/shells        # 列出所有可用shell
+$ printf "%s\n" $SHELL    # 印出當前shell
+$ cat /etc/shells         # 列出所有可用shell
 $ yum install zsh
 $ chsh -s $(which zsh) $(whoami)
 
