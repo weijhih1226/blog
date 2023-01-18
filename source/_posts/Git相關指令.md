@@ -2,7 +2,7 @@
 title: Git一二三，同步真簡單
 categories: [GitHub , Git]
 tags: [GitHub , Git]
-updated: 2022/11/30 16:00
+updated: 2023/01/18 16:48
 ---
 
 Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。
@@ -254,3 +254,27 @@ $ git config --global core.autocrlf true      # 自動轉換CRLF
 $ git config --global user.name "xxx"         # 使用者名稱
 $ git config --global user.email "xxx@xx.com" # 使用者電子郵件
 ```
+
+### git忽略追蹤
+- 狀況一：新增過濾條件**後新增的檔案**
+  - 符合規則 Git 就不會去追蹤。
+- 狀況二：新增過濾條件**前新增的檔案**
+  - 沒有額外處理還是會被追蹤。
+  1. 於專案根目錄新增 `.gitignore` 檔案。
+  2. 於檔案內新增需要忽略的檔案、目錄等，例如：
+     ```yaml
+     *.conf          # 檔案
+     __pycache__/    # 目錄
+     ```
+  3. 若以 git status 查看，會發現記錄只有新增一個檔案而已，而這就是因為先有 Git 記錄才新增 .gitignore 檔案，因此進行以下步驟清除快取並重新加入追蹤，才會套用新的 .gitignore 設定：
+     ```bash
+     # 清除本機 Git 的快取，就是將所有檔案移除 Git 的追蹤，但沒有刪除檔案
+     $ git rm -r --cached .
+     # 重新加入 Git 追蹤，這時就會重新套入 .gitignore 設定
+     $ git add .
+     # 重新 commit ，並會忽略設定在 .gitignore 的檔案
+     $ git commit -m 'update .gitignore'
+     ```
+
+## 參考資料
+- https://shichia.medium.com/gitignore-忽略那些不該上傳的-git-檔案-2031ac4dc679
