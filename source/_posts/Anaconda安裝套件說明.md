@@ -140,7 +140,7 @@ $ conda activate <環境名稱>
 
 這一步非常關鍵，否則會導致遷移失敗。至此，conda環境遷移結束。
 
-### 輸出套件清單
+### 方式二：從清單安裝
 ```console
 $ conda env export -n <環境名稱> -f <套件清單檔案(.yml)>    # 輸出環境套件階層清單yaml檔案
 $ conda env create -n <環境名稱> -f <套件清單檔案(.yml)>    # 從清單安裝套件
