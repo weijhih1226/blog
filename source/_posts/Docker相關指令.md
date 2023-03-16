@@ -2,7 +2,7 @@
 title: Docker常用相關指令
 categories: [Docker]
 tags: [Docker]
-updated: 2023/01/18 16:48
+updated: 2023/03/16 11:00
 ---
 
 # Docker 指令功能全集
@@ -108,4 +108,22 @@ $ docker version                                # 顯示詳細版本
 $ docker run <映像檔名稱>:<版本號>                      # 從映像檔啟動容器
 $ docker run --name <指定容器名稱> <映像檔>             # 指定容器名稱
 $ docker run -dp <本機通訊埠>:<容器通訊埠> <映像檔>     # 指定通訊埠並在背景運行
+```
+
+## DOCKERFILE
+
+```console
+$ docker build -t <映像檔名稱>:latest . --no-cache  # 版本號為latest，確定Dockerfile有放在同目錄下，--no-cache是避免在build的時候被cache住
+$ docker images                                     # 查看是否有build成功
+```
+
+```dockerfile
+FROM centos:7               # 使用到image名稱及版本號
+LABEL maintainer=satoshi    # 維護者資訊
+# MAINTAINER satoshi        # 已棄用寫法(維護者資訊)
+
+ENV http_proxy=${PROXY}
+ENV https_proxy=${PROXY}
+
+未完待續...
 ```

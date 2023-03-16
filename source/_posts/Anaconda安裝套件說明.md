@@ -2,7 +2,7 @@
 title: Anaconda安裝套件說明
 categories: [Anaconda , Python]
 tags: [Anaconda , Python]
-updated: 2022/11/30 16:00
+updated: 2023/03/16 11:00
 ---
 
 ## 基本指令
@@ -21,7 +21,31 @@ $ conda info                                # 查看當下工作環境設定
 $ conda config --add channels conda-forge   # 增加套件下載通道至.condarc
 ```
 
+### 安裝套件
+
+- 透過conda方式：
+```console
+$ conda install <套件名稱>
+$ conda install <套件名稱> -n <指定環境>
+
+$ conda list -e > <套件列表檔案>                            # 輸出套件列表（非階層式）
+$ conda env export -n <環境名稱> -f <環境名稱>.yml          # 輸出環境套件階層列表
+$ conda env create --name <環境名稱> --file <套件列表檔案>  # 安裝套件列表
+```
+
+- 透過pip方式：
+```console
+$ pip install <套件名稱>
+
+$ pip freeze -l > <套件列表檔案>  # 輸出套件列表
+$ pip install -r <套件列表檔案>   # 安裝套件列表
+  --force-reinstall
+  --ignore-installed
+```
+
+
 ### 套件相關
+
 ```console
   -e, --export > 檔案名稱   # 輸出檔案
   -n, --name 環境名稱
@@ -90,7 +114,8 @@ $ export https_proxy=http://proxy.cwb.gov.tw:8888
 Windows系統變數不區分大小寫。
 
 
-## 打包環境遷移
+## 環境遷移
+### 方式一：打包帶走
 
 首先須先安裝conda-pack套件，以使用`conda pack`及`conda unpack`指令來打包及解包。
 
@@ -114,6 +139,12 @@ $ conda activate <環境名稱>
 ```
 
 這一步非常關鍵，否則會導致遷移失敗。至此，conda環境遷移結束。
+
+### 輸出套件清單
+```console
+$ conda env export -n <環境名稱> -f <套件清單檔案(.yml)>    # 輸出環境套件階層清單yaml檔案
+$ conda env create -n <環境名稱> -f <套件清單檔案(.yml)>    # 從清單安裝套件
+```
 
 ## 參考資料
 
