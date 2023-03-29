@@ -2,7 +2,7 @@
 title: Anaconda安裝套件說明
 categories: [Anaconda , Python]
 tags: [Anaconda , Python]
-updated: 2023/03/16 11:00
+updated: 2023/03/24 09:30
 ---
 
 ## 基本指令
@@ -117,13 +117,15 @@ Windows系統變數不區分大小寫。
 ## 環境遷移
 ### 方式一：打包帶走
 
-首先須先安裝conda-pack套件，以使用`conda pack`及`conda unpack`指令來打包及解包。
+首先須先在要打包的環境中安裝conda-pack套件，以使用`conda pack`及`conda unpack`指令來打包及解包。
 
 ```console
 $ conda install -c conda-forge conda-pack   # 安裝conda-pack套件
 ```
 
 接著選擇要打包的工作環境，打包產生`<環境名稱>.tar.gz`檔。再利用tar在欲放置工作環境之目錄解包。
+
+> 確認來源與目的系統環境同為Windows或Linux。
 
 ```console
 $ conda pack -n <環境名稱> --ignore-editable-packages   # 打包／壓縮
