@@ -7,9 +7,7 @@ updated: 2023/03/16 11:00
 
 # Docker 指令功能全集
 
-``` bash
-$ docker ps                             # 查看各容器使用狀態（ID、NAME）
-$ docker ps -a                          # 查看所有容器使用狀態（包含已停止容器）
+```bash
 $ docker inspect <容器ID|名稱>          # 檢查某Container的狀態（進入點、執行狀態及其他詳細資料）
 $ docker stats <容器ID|名稱>            # 查看各Container的CPU、記憶體及網路使用
 $ docker exec <容器ID|名稱> [COMMAND]   # 在外部向Container內執行指令
@@ -18,11 +16,31 @@ $ docker service ls                     # 列出Service狀態
 $ docker service logs <服務ID|名稱>     # 將Service內的輸出顯示到螢幕上
 ```
 
+- 容器相關
+  
+  ```bash
+  $ docker ps                                       # 查看狀態
+  $ docker ps -a                                    # 查看所有狀態
+  $ docker run -it --name <name> <image> <command>  # 新建、啟動並執行指令
+  $ docker start <container>                        # 啟動
+  $ docker stop <container>                         # 停止
+  $ docker restart <container>                      # 重啟
+  $ docker rm <container>                           # 移除
+  ```
+
+- 映像檔相關
+  ```bash
+  $ docker build -t <image>[:tag] <path>            # 從dockerfile建立
+  $ docker images                                   # 列出
+  $ docker image ls                                 # 列出
+  $ docker image rm                                 # 移除
+  ```
+
 因Docker可能裝在root權限底下，如沒有root使用Docker的權限，請在各指令前加sudo！
 
 ## 查看容器使用狀態
 
-``` bash
+```bash
 $ docker ps
 $ docker ps -a  # 查看所有容器使用狀態
 CONTAINER ID    IMAGE                   COMMAND CREATED     STATUS      PORTS                               NAMES
@@ -35,14 +53,14 @@ Container的使用狀態會列出Container ID、所使用的IMAGE（映像檔）
 
 ## 查看各Container的CPU、記憶體及網路使用
 
-``` bash
+```bash
 $ docker stats <容器ID|名稱>
 $ docker stats --no-stream          # 不滾動顯示
 ```
 
 ## 在外部向容器內執行指令
 
-``` bash
+```bash
 $ docker exec
 Usage: docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
 $ docker exec -it <Container ID|NAME> bash
@@ -53,7 +71,7 @@ $ docker exec -it <Container ID|NAME> bash
 ## 列出Docker服務並查詢服務狀態
 ### 列出Docker服務
 
-``` bash
+```bash
 $ docker service ls
 ID              NAME        MODE    REPLICAS    IMAGE                   PORTS
 zo97osyy73we    qpeplus     global  3/3         127.0.0.1:5000/*:3.3.0  *:8000->8000/tcp
@@ -63,13 +81,13 @@ zo97osyy73we    qpeplus     global  3/3         127.0.0.1:5000/*:3.3.0  *:8000->
 
 ### 查詢服務狀態
 
-``` bash
+```bash
 $ docker service logs <ID|NAME>
 ```
 
 ## 查看Swarm Nodes
 
-``` bash
+```bash
 $ docker node ls
 ```
 
@@ -99,31 +117,66 @@ $ docker version                                # 顯示詳細版本
 
 ### DOCKER RUN
 
+功能：從映像檔啟動容器。
+
 - `-d` - 在背景運行容器，並列出容器ID
-- `--name <指定容器名稱>` - 指定容器名稱
-- `-p <本機通訊埠>:<容器通訊埠>` - 本機的通訊埠對應到容器的通訊埠
+- `-i` - 保持stdin
 - `-t` - 分配pseudo-TTY
+- `-p <host_port>:<container_port>` - 本機的通訊埠對應到容器的通訊埠
+- `-v, --volume <host_dir>:<container_dir>` - 掛載本機目錄至容器(自動建立)
+- `--mount <type=bind,source=host_dir,target=container_dir>` - 掛載本機目錄至容器
+- `-w, --workdir <container_dir>` - 指定工作目錄
+- `--name <name>` - 指定容器名稱
 
 ```console
-$ docker run <映像檔名稱>:<版本號>                      # 從映像檔啟動容器
-$ docker run --name <指定容器名稱> <映像檔>             # 指定容器名稱
-$ docker run -dp <本機通訊埠>:<容器通訊埠> <映像檔>     # 指定通訊埠並在背景運行
+$ docker run <image>[:<tag>]                            # 從映像檔啟動容器
+$ docker run --name <name> <image>                      # 指定容器名稱
+$ docker run -dp <host_port>:<container_port> <image>   # 指定通訊埠並在背景運行
+$ docker run -it --name <name> -v <host_dir>:<container_dir> <image> <command> # 從映像檔啟動、掛載目錄並進入容器維持輸入
 ```
 
 ## DOCKERFILE
 
+若現有的image儲存庫無法滿足功能需求，可以透過dockerfile，在現有的image儲存庫上，構建自己的image。
+
+- Dockerfile關鍵字使用說明
+  ```dockerfile
+  FROM <image>[:<tag>]                          # 映像檔:版號
+  ADD [--chown=<user>:<group>] <src>... <dest>  # 從<src>複製至image的<dest>處(支援從遠端下載，tar.gz檔自動解壓縮)
+  COPY [--chown=<user>:<group>] <src>... <dest> # 從<src>複製至image的<dest>處(僅支援本地複製)
+  WORKDIR <path>                                # 設定工作目錄
+  RUN <command>                                 # 在當前image上再執行指令並提交結果
+  RUN ["executable", "param1", "param2"]        # 在當前image上再執行指令並提交結果
+  CMD <command>                                 # 執行中容器提供初始指令
+  CMD ["executable", "param1", "param2"]        # 2個以上CMD指令只會運行最後1個
+  USER <user>[:<group>]                         # 設定使用者及群組
+  USER <uid>[:<gid>]                            # 設定使用者及群組
+  ```
+
+- Dockerfile其他說明
+  ```dockerfile
+  FROM <base_image> AS <stage_name>             # 命名提高可讀性
+  COPY --from=<stage_name>                      # 可複製image
+  ```
+
+寫完dockerfile之後，再利用`docker build`建立自己的映像檔。
 ```console
-$ docker build -t <映像檔名稱>:latest . --no-cache  # 版本號為latest，確定Dockerfile有放在同目錄下，--no-cache是避免在build的時候被cache住
+$ docker build -t <映像檔名稱>[:<tag>] . --no-cache # 沒有tag時預設為latest，確定Dockerfile有放在同目錄下，--no-cache是避免在build的時候被cache住
 $ docker images                                     # 查看是否有build成功
 ```
 
 ```dockerfile
-FROM centos:7               # 使用到image名稱及版本號
-LABEL maintainer=satoshi    # 維護者資訊
-# MAINTAINER satoshi        # 已棄用寫法(維護者資訊)
+FROM centos:8                   # 使用到image名稱及版本號
+LABEL maintainer=satoshi        # 維護者資訊
+# MAINTAINER satoshi            # 已棄用寫法(維護者資訊)
 
-ENV http_proxy=${PROXY}
+ARG PROXY                       # 只在build時存在的變數(可從內部或外部設值，例如：docker build --build-arg PROXY=http://proxy.xxx.com.tw/:1234 .)
+ENV http_proxy=${PROXY}         # 設定環境變數(在build及run時存在的變數)
 ENV https_proxy=${PROXY}
 
-未完待續...
+ADD run.py test.txt /           # 將local檔案複製到image裡(tar.gz檔會自動解壓縮)
+
+RUN yum install -y wget         # 安裝這個image需要的套件
+RUN cd /                        # 切換到根目錄
+CMD ["/run.py" , "test.txt"]    # docker run時做的指令
 ```
