@@ -2,7 +2,7 @@
 title: Linux常用相關指令
 categories: [Linux]
 tags: [Linux]
-updated: 2023/01/18 16:48
+updated: 2023/04/20 17:00
 ---
 
 # Linux 指令功能全集
@@ -144,6 +144,57 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ZSH_THEME="agnoster"
 ```
 
+## 效能分析
+
+```bash
+$ top           # 查看CPU、執行緒狀態
+$ uptime        # 僅顯示目前時間、主機開機時間、登入使用者數、負載情況
+$ w             # 顯示目前登入使用者相關資訊
+```
+
+- top按鍵功能
+  - 1：顯示單一/多cpu使用情形切換
+- load average
+  - 系統每1分鐘、5分鐘、15分鐘的負載情況
+  - 須除以邏輯CPU數量(`cat /proc/cpuinfo | grep "processor" | wc -l`)
+  - 數值1為飽和、0.7以上須注意
+- Tasks
+  - total - 行程總數
+  - running - 正在執行
+  - sleeping - 休眠狀態
+  - stopped - 已停止
+  - zombie - 僵屍狀態
+- CPU
+  - us - 用戶空間佔用CPU的百分比
+  - sy - 內核空間佔用CPU的百分比
+  - ni - 改變過優先順序的進程佔用CPU的百分比
+  - wa - IO等待佔用CPU的百分比
+  - hi - 硬中斷（Hardware IRQ）佔用CPU的百分比
+  - si - 軟中斷（Software Interrupts）佔用CPU的百分比
+- KiB Mem
+  - total - 實體記憶體容量
+  - free - 剩餘記憶體容量
+  - used - 已使用的記憶體容量
+  - buff/cache - 暫存記憶體容量
+- KiB Swap
+  - total - swap總容量
+  - free - 剩餘swap容量
+  - used - 已使用的swap容量
+  - avail Mem - 暫存記憶體容量
+- Process
+  - PID - 行程id（Process ID）
+  - USER - 使用者
+  - PR - 優先順序
+  - NI - nice值（值越小優先權越高）
+  - VIRT - 該行程使用的虛擬記憶體總量（單位：KB(VIRT=SWAP+RES)）
+  - RES - 該行程使用的、未被使用的實體記憶體大小（單位：KB(RES=CODE+DATA)）
+  - SHR - 共用記憶體大小（單位：KB）
+  - S - 行程狀態（D：不可中斷的睡眠狀態、R：運行、S：睡眠、T：跟蹤/停止、Z：僵屍進程）
+  - %CPU - 上次更新到現在的CPU時間佔用百分比
+  - %MEM - 行程使用的實體記憶體百分比
+  - TIME+ - 行程使用的CPU時間總計（單位：1/100秒）
+  - COMMAND - 行程名稱
+
 ## Linux系統根目錄介紹
 
 - /bin
@@ -183,3 +234,5 @@ ZSH_THEME="agnoster"
 
 # 參考資料
 - https://magiclen.org/linux-init-application-service/
+- https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A
+- https://blog.xuite.net/zerofirst/blog/147985077
