@@ -2,7 +2,7 @@
 title: Git一二三，同步真簡單
 categories: [GitHub , Git]
 tags: [GitHub , Git]
-updated: 2023/01/18 16:48
+updated: 2023/07/07 12:00
 ---
 
 Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。
@@ -203,10 +203,11 @@ $ git remote -v
 github    https://github.com/weijhih1226/blog.git (fetch)
 github    https://github.com/weijhih1226/blog.git (push)
 
-$ git branch -a     # 查看所有分支名稱（本地及遠端）
-* master                    # 本地分支（目前的分支）
-  remotes/github/gh-pages   # 遠端分支
-  remotes/github/main       # 遠端分支
+$ git branch -l               # 查看分支名稱（本地）
+$ git branch -a               # 查看所有分支名稱（本地及遠端）
+* master                      # 本地分支（目前的分支）
+  remotes/github/gh-pages     # 遠端分支
+  remotes/github/main         # 遠端分支
 ```
 
 從上面git branch -a當中，可以看到因為目前本地端是在master分支底下，而遠端則在github底下有自動抓到2個分支。
@@ -225,7 +226,7 @@ $ git checkout main
 ```
 
 ```bash
-$ git push <遠端名稱> <遠端分支名稱>
+$ git push <遠端名稱> <分支名稱>
 ```
 
 例如：

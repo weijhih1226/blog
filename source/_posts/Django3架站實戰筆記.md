@@ -2,16 +2,19 @@
 title: Django3架站實戰筆記
 categories: [Django , Python]
 tags: [Django , Python]
+updated: 2023/07/07 12:00
 ---
 
 # 常用指令
 
 ```console
+> django-admin startproject <專案名稱>      # 建立專案
 > python manage.py startapp <應用程式名稱>  # 新增應用程式
 > python manage.py makemigrations           # 建立資料檔
 > python manage.py migrate                  # 同步模型與資料庫
 > python manage.py runserver                # 啟動server
-> python manage.py createsuperuser
+> python manage.py createsuperuser          # 建立superuser
+> python manage.py changepassword admin     # 修改admin密碼
 ```
 
 # 安裝與建立專案、應用程式

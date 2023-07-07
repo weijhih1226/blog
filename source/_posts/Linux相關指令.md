@@ -2,7 +2,7 @@
 title: Linux常用相關指令
 categories: [Linux]
 tags: [Linux]
-updated: 2023/04/20 17:00
+updated: 2023/07/07 12:00
 ---
 
 # Linux 指令功能全集
@@ -124,6 +124,12 @@ $ source ~/.bash_profile
 ```
 
 ## 更換Shell
+
+```bash
+$ sudo apt install fish
+$ curl -L https://get.oh-my.fish | fish
+$ omf install bobthefish
+```
 
 ```bash
 $ printf "%s\n" $SHELL    # 印出當前shell
