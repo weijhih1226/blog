@@ -2,6 +2,7 @@
 title: Django3架站實戰筆記
 categories: [Django , Python]
 tags: [Django , Python]
+date: 2023/01/18 16:45
 updated: 2023/07/07 12:00
 ---
 

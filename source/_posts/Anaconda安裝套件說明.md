@@ -2,6 +2,7 @@
 title: Anaconda安裝套件說明
 categories: [Anaconda , Python]
 tags: [Anaconda , Python]
+date: 2023/03/16 11:04
 updated: 2023/03/24 09:30
 ---
 

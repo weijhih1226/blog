@@ -3,6 +3,7 @@ title: Hexo使用說明
 categories: [GitHub, Hexo]
 tags: [hexo, git]
 date: 2022/08/23 12:10
+updated: 2022/08/24 14:04
 ---
 
 ## Hexo初始化
