@@ -13,13 +13,13 @@ navbar:
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
 
 index:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1
   slogan:
     text: "面對前方未知的旅途，讓我們一起開始冒險吧"
 
 post:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1
   meta:     # 文章訊息
     date:   # 文章日期
@@ -35,41 +35,41 @@ post:
     note_class: info        # Options: default | primary | info | success | warning | danger | light
 
 archive:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1
 
 category:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1
 
 tag:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1
 
 about:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1
 
-  avatar: /img/avatar/avatar1.jpg
+  avatar: /images/avatar1.jpg
   name: 小威
-  intro: 我是小威
+  intro: Where there's a will, there's a way.
   icons:
     - { class: 'iconfont icon-github-fill', link: 'https://github.com/weijhih1226/', tip: 'GitHub' }
     - { class: 'iconfont icon-facebook-fill', link: 'https://www.facebook.com/charlie841226/', tip: 'Facebook' }
     - { class: 'iconfont icon-instagram-fill', link: 'https://www.instagram.com/chen_weijhih/',  tip: 'Instagram' }
     - { class: 'iconfont icon-youtube-fill', link: 'https://www.youtube.com/c/%E9%99%B3%E5%A8%81%E5%BF%971',  tip: 'YouTube' }
     - { class: 'iconfont icon-linkedin-fill', link: 'https://www.linkedin.com/in/%E9%99%B3%E5%A8%81%E5%BF%97/',  tip: 'LinkedIn' }
-    - { class: 'iconfont icon-line-fill', qrcode: '/img/icon/LINE QRcode.jpg' }
+    - { class: 'iconfont icon-line-fill', qrcode: '/images/icon/LINE QRcode.jpg' }
     - { class: 'iconfont icon-mail', link: 'mailto:cwj@cwb.gov.tw', tip: 'E-mail' }
 
 page:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1
 
 page404:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1
 
 links:
-  banner_img: /img/bg/background.jpg
+  banner_img: /images/background.jpg
   banner_mask_alpha: 0.1

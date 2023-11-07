@@ -2,6 +2,8 @@
 title: 利用JS撈網路資料
 categories: [HTML , JavaScript]
 tags: [HTML , JavaScript]
+date: 2022/09/06 11:12
+updated: 2022/09/26 11:17
 ---
 
 ## 跨來源資源共用（Cross-Origin Resource Sharing，CORS）

@@ -2,6 +2,7 @@
 title: MySQL指令
 categories: [MySQL , SQL]
 tags: [MySQL , SQL]
+date: 2023/04/20 17:04
 updated: 2023/04/20 17:00
 ---
 
