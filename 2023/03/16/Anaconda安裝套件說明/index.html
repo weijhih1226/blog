@@ -1,0 +1,738 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Satoshi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基本指令裝完後預設工作環境為base。 版號說明MAIN.MINOR.PATCH (e.g., Python 3.11.0, conda 22.9.0) conda相關1234$ conda --version                           # 檢視目前conda版本$ conda --help                              # 查看conda指令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Anaconda安裝套件說明">
+<meta property="og:url" content="https://weijhih1226.github.io/blog/2023/03/16/Anaconda%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6%E8%AA%AA%E6%98%8E/index.html">
+<meta property="og:site_name" content="小威的漂流手札">
+<meta property="og:description" content="基本指令裝完後預設工作環境為base。 版號說明MAIN.MINOR.PATCH (e.g., Python 3.11.0, conda 22.9.0) conda相關1234$ conda --version                           # 檢視目前conda版本$ conda --help                              # 查看conda指令">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-03-16T03:04:00.000Z">
+<meta property="article:modified_time" content="2023-03-24T01:30:00.000Z">
+<meta property="article:author" content="Satoshi">
+<meta property="article:tag" content="Anaconda">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Anaconda安裝套件說明｜小威的漂流手札</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"weijhih1226.github.io","root":"/blog/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>小威的漂流手札</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>網誌</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/images/background.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Anaconda安裝套件說明"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-16 11:04" pubdate>
+          2023年3月16日 11:04
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分鐘
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Anaconda安裝套件說明</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最後更新於：2023年3月24日 09:30
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><p>裝完後預設工作環境為base。</p>
+<h3 id="版號說明"><a href="#版號說明" class="headerlink" title="版號說明"></a>版號說明</h3><p>MAIN.MINOR.PATCH (e.g., Python 3.11.0, conda 22.9.0)</p>
+<h3 id="conda相關"><a href="#conda相關" class="headerlink" title="conda相關"></a>conda相關</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda --version                           <span class="hljs-comment"># 檢視目前conda版本</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda --<span class="hljs-built_in">help</span>                              <span class="hljs-comment"># 查看conda指令說明文件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda info                                <span class="hljs-comment"># 查看當下工作環境設定</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda config --add channels conda-forge   <span class="hljs-comment"># 增加套件下載通道至.condarc</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h3><ul>
+<li><p>透過conda方式：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda install &lt;套件名稱&gt;</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda install &lt;套件名稱&gt; -n &lt;指定環境&gt;</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda list -e &gt; &lt;套件列表檔案&gt;                            <span class="hljs-comment"># 輸出套件列表（非階層式）</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda <span class="hljs-built_in">env</span> <span class="hljs-built_in">export</span> -n &lt;環境名稱&gt; -f &lt;環境名稱&gt;.yml          <span class="hljs-comment"># 輸出環境套件階層列表</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda <span class="hljs-built_in">env</span> create --name &lt;環境名稱&gt; --file &lt;套件列表檔案&gt;  <span class="hljs-comment"># 安裝套件列表</span></span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>透過pip方式：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install &lt;套件名稱&gt;</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">pip freeze -l &gt; &lt;套件列表檔案&gt;  <span class="hljs-comment"># 輸出套件列表</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install -r &lt;套件列表檔案&gt;   <span class="hljs-comment"># 安裝套件列表</span></span><br>  --force-reinstall<br>  --ignore-installed<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="套件相關"><a href="#套件相關" class="headerlink" title="套件相關"></a>套件相關</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs console">-e, --export &gt; 檔案名稱   # 輸出檔案<br>-n, --name 環境名稱<br>-p, --prefix 環境路徑<br>--json                    # 輸出成json檔<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda list                                <span class="hljs-comment"># 列出當下工作環境下所有套件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda list -n &lt;環境名稱&gt;                  <span class="hljs-comment"># 列出該工作環境下所有套件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda list [正規表示式]                   <span class="hljs-comment"># 列出當下工作環境下部分套件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda list -e &gt; &lt;檔案名稱&gt;                <span class="hljs-comment"># 輸出給conda create --file</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda update &lt;套件名稱&gt;                   <span class="hljs-comment"># 更新指定套件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda update --all                        <span class="hljs-comment"># 更新全部套件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda remove &lt;套件名稱&gt;                   <span class="hljs-comment"># 移除當下工作環境下之套件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda remove -n &lt;環境名稱&gt; &lt;套件名稱&gt;     <span class="hljs-comment"># 移除指定工作環境下之套件</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="虛擬工作環境相關"><a href="#虛擬工作環境相關" class="headerlink" title="虛擬工作環境相關"></a>虛擬工作環境相關</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda create -n &lt;環境名稱&gt; &lt;套件名稱=版本&gt;        <span class="hljs-comment"># 建立新的工作環境</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda remove -n &lt;環境名稱&gt; &lt;套件名稱&gt;             <span class="hljs-comment"># 移除指定工作環境下之套件</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda remove -n &lt;環境名稱&gt; --all                  <span class="hljs-comment"># 移除指定工作環境</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda rename -n &lt;原環境名稱&gt; &lt;新環境名稱&gt;         <span class="hljs-comment"># 更名指定工作環境</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda <span class="hljs-built_in">env</span> list                                    <span class="hljs-comment"># 列出有哪些工作環境</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda <span class="hljs-built_in">env</span> <span class="hljs-built_in">export</span> -n &lt;環境名稱&gt; -f &lt;環境名稱&gt;.yml  <span class="hljs-comment"># 輸出該工作環境套件列表</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda activate [環境名稱]                         <span class="hljs-comment"># 啟動工作環境，未指定預設為base</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda deactivate                                  <span class="hljs-comment"># 停用工作環境</span></span><br></code></pre></td></tr></table></figure>
+
+<p>建立新的工作環境，可自行指定安裝某Python版本，例如：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda create -n my_env python=3.9</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="設定proxy"><a href="#設定proxy" class="headerlink" title="設定proxy"></a>設定proxy</h2><p>由於氣象局內有專用Proxy設定，如要順利連網下載安裝、更新，必須使用以下設定：</p>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">export</span> http_proxy=http://proxy.cwb.gov.tw:8888</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">export</span> https_proxy=http://proxy.cwb.gov.tw:8888</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash"><span class="hljs-built_in">set</span> http_proxy=http://proxy.cwb.gov.tw:8888</span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash"><span class="hljs-built_in">set</span> https_proxy=http://proxy.cwb.gov.tw:8888</span><br></code></pre></td></tr></table></figure>
+
+<p>以上設定僅在該次登入有效，如要在下次登入也能沿用此次設定，必須寫入家目錄下的.bashrc設定（Linux）／環境變數（Windows）。</p>
+<p>以Windows 10為例，環境變數設定在：</p>
+<p><strong>控制台&gt;系統及安全性&gt;系統&gt;進階系統設定&gt;進階&gt;環境變數&gt;系統變數&gt;新增</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">變數</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HTTP_PROXY</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://proxy.cwb.gov.tw:8888/">http://proxy.cwb.gov.tw:8888</a></td>
+</tr>
+<tr>
+<td align="left">HTTPS_PROXY</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://proxy.cwb.gov.tw:8888/">http://proxy.cwb.gov.tw:8888</a></td>
+</tr>
+</tbody></table>
+<p>Windows系統變數不區分大小寫。</p>
+<h2 id="環境遷移"><a href="#環境遷移" class="headerlink" title="環境遷移"></a>環境遷移</h2><h3 id="方式一：打包帶走"><a href="#方式一：打包帶走" class="headerlink" title="方式一：打包帶走"></a>方式一：打包帶走</h3><p>首先須先在要打包的環境中安裝conda-pack套件，以使用<code>conda pack</code>及<code>conda unpack</code>指令來打包及解包。</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda install -c conda-forge conda-pack   <span class="hljs-comment"># 安裝conda-pack套件</span></span><br></code></pre></td></tr></table></figure>
+
+<p>接著選擇要打包的工作環境，打包產生<code>&lt;環境名稱&gt;.tar.gz</code>檔。再利用tar在欲放置工作環境之目錄解包。</p>
+<blockquote>
+<p>確認來源與目的系統環境同為Windows或Linux。</p>
+</blockquote>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda pack -n &lt;環境名稱&gt; --ignore-editable-packages   <span class="hljs-comment"># 打包／壓縮</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">mkdir</span> -p &lt;目錄名稱&gt;                           <span class="hljs-comment"># 新增欲放置工作環境之目錄</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">tar -xzf &lt;環境名稱&gt;.tar.gz -C &lt;目錄名稱&gt;  <span class="hljs-comment"># 解壓縮／解包</span></span><br></code></pre></td></tr></table></figure>
+
+<p>解包後便可以啟動工作環境了，啟動後還需要再一步<code>conda unpack</code>。</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda activate &lt;環境名稱&gt;</span><br>(&lt;環境名稱&gt;) $ conda unpack # 或conda-unpack<br></code></pre></td></tr></table></figure>
+
+<p>這一步非常關鍵，否則會導致遷移失敗。至此，conda環境遷移結束。</p>
+<h3 id="方式二：從清單安裝"><a href="#方式二：從清單安裝" class="headerlink" title="方式二：從清單安裝"></a>方式二：從清單安裝</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda <span class="hljs-built_in">env</span> <span class="hljs-built_in">export</span> -n &lt;環境名稱&gt; -f &lt;套件清單檔案(.yml)&gt;    <span class="hljs-comment"># 輸出環境套件階層清單yaml檔案</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda <span class="hljs-built_in">env</span> create -n &lt;環境名稱&gt; -f &lt;套件清單檔案(.yml)&gt;    <span class="hljs-comment"># 從清單安裝套件</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/datainpoint/python-essentials-conda-quickstart-1f1e9ecd1025">https://medium.com/datainpoint/python-essentials-conda-quickstart-1f1e9ecd1025</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/Anaconda/" class="category-chain-item">Anaconda</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/Anaconda/Python/" class="category-chain-item">Python</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/Anaconda/" class="print-no-link">#Anaconda</a>
+      
+        <a href="/blog/tags/Python/" class="print-no-link">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Anaconda安裝套件說明</div>
+      <div>https://weijhih1226.github.io/blog/2023/03/16/Anaconda安裝套件說明/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Satoshi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2023年3月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/03/31/Docker%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/" title="Docker常用相關指令">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker常用相關指令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/01/18/Django3%E6%9E%B6%E7%AB%99%E5%AF%A6%E6%88%B0%E7%AD%86%E8%A8%98/" title="Django3架站實戰筆記">
+                        <span class="hidden-mobile">Django3架站實戰筆記</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

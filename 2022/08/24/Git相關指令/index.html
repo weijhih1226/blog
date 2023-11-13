@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Satoshi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。 Git指令全集概念 初始化git工作目錄 狀態：未初始化 1$ git init  初始化後，目錄下新增.git目錄">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git一二三，同步真簡單">
+<meta property="og:url" content="https://weijhih1226.github.io/blog/2022/08/24/Git%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="小威的漂流手札">
+<meta property="og:description" content="Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。 Git指令全集概念 初始化git工作目錄 狀態：未初始化 1$ git init  初始化後，目錄下新增.git目錄">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-08-24T06:07:00.000Z">
+<meta property="article:modified_time" content="2023-07-07T04:00:00.000Z">
+<meta property="article:author" content="Satoshi">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Git一二三，同步真簡單｜小威的漂流手札</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"weijhih1226.github.io","root":"/blog/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>小威的漂流手札</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>網誌</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/images/background.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Git一二三，同步真簡單"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-24 14:07" pubdate>
+          2022年8月24日 14:07
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 分鐘
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Git一二三，同步真簡單</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最後更新於：2023年7月7日 12:00
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。</p>
+<h1 id="Git指令全集"><a href="#Git指令全集" class="headerlink" title="Git指令全集"></a>Git指令全集</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol start="0">
+<li><p>初始化git工作目錄</p>
+<p>狀態：未初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git init<br></code></pre></td></tr></table></figure>
+
+<p>初始化後，目錄下新增.git目錄。</p>
+</li>
+<li><p>工作區（Working Directory）</p>
+<p>狀態：未追蹤（Untracked files，對於新加入檔案或提交後新建立檔案）、已更改（Changes not staged for commit，對於提交後再被修改之檔案）</p>
+<p>直接編輯的地方，在桌機上可直接操作檔案。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 工作區 -&gt; 暫存區</span><br>$ git add .    <span class="hljs-comment"># 將檔案從工作目錄加入至暫存區</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>暫存區（Staging Area）</p>
+<p>狀態：等待提交（Changes to be committed）</p>
+<p>數據暫時存放的區域，介於工作區與儲存庫之間。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 暫存區 -&gt; 儲存庫</span><br>$ git commit                   <span class="hljs-comment"># 新開編輯器編輯提交訊息</span><br>$ git commit -m <span class="hljs-string">&quot;提交訊息&quot;</span>     <span class="hljs-comment"># 將暫存區內容移至儲存區</span><br>$ git commit -am <span class="hljs-string">&quot;提交訊息&quot;</span>    <span class="hljs-comment"># 從工作區移至儲存庫，對已在儲存庫的檔案有效</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>儲存庫／數據庫（Repository）</p>
+<p>狀態：已提交（Committed）</p>
+<p>存放已經提交的數據。</p>
+<ol>
+<li><p>本地端儲存庫（Local）</p>
+<p>為了方便自己使用的儲存庫，通常是個人開發的電腦或機台。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 本地端 -&gt; 遠端儲存庫</span><br>$ git push        <span class="hljs-comment"># 推送到遠端儲存庫</span><br><br><span class="hljs-comment"># 本地端複製</span><br>$ git <span class="hljs-built_in">clone</span> &lt;本地目錄名稱&gt; &lt;新本地目錄名稱|路徑&gt;  <span class="hljs-comment"># 複製本地儲存庫至指定目錄</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>遠端儲存庫（Remote）</p>
+<p>為了讓多人共享而建立的儲存庫，通常是一個共用的伺服器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 遠端 -&gt; 本地端儲存庫</span><br>$ git fetch &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;     <span class="hljs-comment"># 下載遠端指定分支</span><br>$ git fetch --all                         <span class="hljs-comment"># 下載遠端所有分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt;                    <span class="hljs-comment"># 下載遠端預設分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt; -b &lt;本地分支名稱&gt;  <span class="hljs-comment"># 下載遠端預設分支至指定本地分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt; &lt;目錄名稱|路徑&gt;    <span class="hljs-comment"># 下載遠端預設分支至指定目錄</span><br><br><span class="hljs-comment"># 遠端儲存庫 -&gt; 工作區</span><br>$ git pull &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;:&lt;本地分支名稱&gt;   <span class="hljs-comment"># git fetch + git merge</span><br><br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git init                  <span class="hljs-comment"># 進行版本控制（此時就會有.git目錄產生）</span><br>$ git status                <span class="hljs-comment"># git狀態</span><br>$ git add .                 <span class="hljs-comment"># 將檔案加至暫存區</span><br>$ git commit -m <span class="hljs-string">&quot;提交訊息&quot;</span>  <span class="hljs-comment"># 提交檔案至儲存庫</span><br>$ git filter-branch --tree-filter <span class="hljs-string">&quot;rm -f config/database.yml&quot;</span>   <span class="hljs-comment"># 針對過去的提交批次修改紀錄並提交</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="將存放庫初始化"><a href="#將存放庫初始化" class="headerlink" title="將存放庫初始化"></a>將存放庫初始化</h2><p>首先必須要先將Git本地的存放庫初始化啦！</p>
+<p>到了想要透過Git監控的目錄git init，此時在目錄下會多出.git的隱藏目錄，這就相當於在VS code下在原始檔控制中的「將存放庫初始化」的功能。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git init  <span class="hljs-comment"># 在當前目錄下創建.git以監控版更</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="查看當前git狀態"><a href="#查看當前git狀態" class="headerlink" title="查看當前git狀態"></a>查看當前git狀態</h2><p>先透過git status來查看當前git狀態。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git status  <span class="hljs-comment"># 查看當前git狀態</span><br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use <span class="hljs-string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="hljs-keyword">in</span> what will be committed)<br>        .gitignore<br></code></pre></td></tr></table></figure>
+
+<p>從輸出的內容，可以看到目前本地的分支名稱為master、沒有任何commit（提交），以及哪些檔案還沒被add（加入）追蹤（untracked）。</p>
+<p>目錄下可加入.gitignore檔案，裡面的內容可以加入不想同步追蹤的檔案名稱，以將這些檔案排除在git的檢查之外。</p>
+<p>目錄下加入.gitkeep則是強制git在檢查時，將空目錄也涵蓋進來。</p>
+<h2 id="一、add（加入）untracked（未追蹤）檔案至暫存的變更"><a href="#一、add（加入）untracked（未追蹤）檔案至暫存的變更" class="headerlink" title="一、add（加入）untracked（未追蹤）檔案至暫存的變更"></a>一、add（加入）untracked（未追蹤）檔案至暫存的變更</h2><p>當在目錄當中新增的檔案，只要是非空目錄、未被.gitignore排除檢查的檔案，或者並非是另一個含有.git的目錄，都會被列為檢查對象。</p>
+<p>利用VS code的原始檔控制，會自動偵測已變更的檔案（新增的檔案右方會顯示A(Add)、新增後變更的檔案會顯示M(Modified)），在「變更」欄的右方「+」號則可以將新增或變更的檔案加入到暫存的變更；在「暫存的變更」右方「-」號則是可以選擇取消變更的檔案，等修改好再加進去。</p>
+<p>如果利用指令列，則須透過git status來看各個檔案的情況。</p>
+<p>假設我們先新增一個test.md檔，這時候git status會列在untracked，於是我們git add：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git add test.md<br></code></pre></td></tr></table></figure>
+
+<p>這時候再git status，會看到檔案已被加入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">Changes to be committed:<br>  (use <span class="hljs-string">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage)<br>        new file:   test.md<br></code></pre></td></tr></table></figure>
+
+<p>如果再修改test.md檔案中的文字，再次git status則會看到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">Changes to be committed:<br>  (use <span class="hljs-string">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage)<br>        new file:   test.md<br><br>Changes not staged <span class="hljs-keyword">for</span> commit:<br>  (use <span class="hljs-string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)<br>  (use <span class="hljs-string">&quot;git restore &lt;file&gt;...&quot;</span> to discard changes <span class="hljs-keyword">in</span> working directory)<br>        modified:   <span class="hljs-string">&quot;test.md&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>代表有一個版本已經加入暫存的變更等待提交，而另一個則是因為我們後來的修改而產生的版本，尚未加入提交的行列。</p>
+<blockquote>
+<p>若是目錄中含有其他git監測的目錄，則無法加入追蹤。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">Untracked files:<br>  (use <span class="hljs-string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="hljs-keyword">in</span> what will be committed)<br>        themes/fluid/<br></code></pre></td></tr></table></figure>
+
+<p>像是Hexo部分目錄本身即含有git版控功能，因此部分目錄無法同步加入追蹤。</p>
+<h2 id="二、新增訊息並commit（提交）"><a href="#二、新增訊息並commit（提交）" class="headerlink" title="二、新增訊息並commit（提交）"></a>二、新增訊息並commit（提交）</h2><p>當我們新增檔案或修改某些檔案裡的文字時，可以利用git commit分批提交更新訊息，把每一次的更新訊息記錄下來：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git commit -m <span class="hljs-string">&quot;add test.md&quot;</span><br>[github 1da2962] revise Git相關指令.md<br> 0 file changed, 1 insertions(+)<br> create mode 100644 <span class="hljs-string">&quot;test.md&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>提交之後會顯示提交的分支名稱、提交ID、提交訊息、幾個檔案新增或者被改變。</p>
+<p>每次修改檔案之後，都要記得將檔案再度git add到要提交的行列當中。</p>
+<p>在提交之後，會發現本地端也新增了master分支，代表我們提交的內容會在我們本地的master分支裡。每修改某個檔案都可以在訊息欄做備註。但我們要推送的是遠端分支，而不是本地分支，要確定要提交上去的是哪一個分支。</p>
+<h2 id="三、push（推送）至remote-repository（遠端儲存庫）"><a href="#三、push（推送）至remote-repository（遠端儲存庫）" class="headerlink" title="三、push（推送）至remote repository（遠端儲存庫）"></a>三、push（推送）至remote repository（遠端儲存庫）</h2><p>緊接著，你在工作目錄中陸陸續續新增的檔案，要放到遠端儲存庫供他人使用，就必須先將遠端儲存庫加入路徑之中。Github儲存庫URL在頁面右上角的「code」當中，使用HTTPS或SSH都可以，將想要放置檔案的Github儲存庫URL透過git remote add加入即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote add &lt;遠端名稱&gt; &lt;遠端儲存庫URL&gt;   <span class="hljs-comment"># 將該遠端加入fetch跟push的路徑</span><br>$ git remote -v                               <span class="hljs-comment"># 查看遠端分支名稱及路徑</span><br>$ git remote remove &lt;遠端名稱&gt;                <span class="hljs-comment"># 對應之移除指令</span><br>$ git remote rename &lt;原遠端名稱&gt; &lt;新遠端名稱&gt; <span class="hljs-comment"># 更改遠端名稱</span><br></code></pre></td></tr></table></figure>
+
+<p>以遠端名稱為github為例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote add github https://github.com/weijhih1226/blog.git<br>$ git remote -v<br>github    https://github.com/weijhih1226/blog.git (fetch)<br>github    https://github.com/weijhih1226/blog.git (push)<br><br>$ git branch -l               <span class="hljs-comment"># 查看分支名稱（本地）</span><br>$ git branch -a               <span class="hljs-comment"># 查看所有分支名稱（本地及遠端）</span><br>* master                      <span class="hljs-comment"># 本地分支（目前的分支）</span><br>  remotes/github/gh-pages     <span class="hljs-comment"># 遠端分支</span><br>  remotes/github/main         <span class="hljs-comment"># 遠端分支</span><br></code></pre></td></tr></table></figure>
+
+<p>從上面git branch -a當中，可以看到因為目前本地端是在master分支底下，而遠端則在github底下有自動抓到2個分支。</p>
+<p>利用git checkout則可以切換分支。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git checkout &lt;分支名稱&gt;<br>$ git checkout -b &lt;新的分支名稱&gt;<br></code></pre></td></tr></table></figure>
+
+<p>例如我們如果想將本地端的檔案同步到遠端的main分支上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git checkout main<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git push &lt;遠端名稱&gt; &lt;分支名稱&gt;<br></code></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git push github main<br></code></pre></td></tr></table></figure>
+
+<h2 id="其他常用指令"><a href="#其他常用指令" class="headerlink" title="其他常用指令"></a>其他常用指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git branch &lt;分支名稱&gt;                               <span class="hljs-comment"># 建立本地分支</span><br>$ git branch -d &lt;分支名稱&gt;                            <span class="hljs-comment"># 刪除本地分支</span><br>$ git branch &lt;-m|--move&gt; [&lt;舊分支&gt;] &lt;新分支&gt;          <span class="hljs-comment"># 移動／更名分支</span><br>$ git branch &lt;-M|--move --force&gt; [&lt;舊分支&gt;] &lt;新分支&gt;  <span class="hljs-comment"># 強制移動／更名分支</span><br>$ git push &lt;遠端名稱&gt; --delete &lt;遠端分支名稱&gt;         <span class="hljs-comment"># 刪除遠端分支</span><br>$ git push &lt;遠端名稱&gt; :&lt;遠端分支名稱&gt;                 <span class="hljs-comment"># 刪除遠端分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端專案URL&gt; -b &lt;分支名稱&gt;               <span class="hljs-comment"># 複製遠端分支</span><br>$ git pull &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;:&lt;本地分支名稱&gt;   <span class="hljs-comment"># git fetch + git merge</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="關於git組態"><a href="#關於git組態" class="headerlink" title="關於git組態"></a>關於git組態</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git config --global core.autocrlf <span class="hljs-literal">true</span>      <span class="hljs-comment"># 自動轉換CRLF</span><br>$ git config --global user.name <span class="hljs-string">&quot;xxx&quot;</span>         <span class="hljs-comment"># 使用者名稱</span><br>$ git config --global user.email <span class="hljs-string">&quot;xxx@xx.com&quot;</span> <span class="hljs-comment"># 使用者電子郵件</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="git忽略追蹤"><a href="#git忽略追蹤" class="headerlink" title="git忽略追蹤"></a>git忽略追蹤</h3><ul>
+<li>狀況一：新增過濾條件<strong>後新增的檔案</strong><ul>
+<li>符合規則 Git 就不會去追蹤。</li>
+</ul>
+</li>
+<li>狀況二：新增過濾條件<strong>前新增的檔案</strong><ul>
+<li>沒有額外處理還是會被追蹤。</li>
+</ul>
+<ol>
+<li>於專案根目錄新增 <code>.gitignore</code> 檔案。</li>
+<li>於檔案內新增需要忽略的檔案、目錄等，例如：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">*.conf</span>          <span class="hljs-comment"># 檔案</span><br><span class="hljs-string">__pycache__/</span>    <span class="hljs-comment"># 目錄</span><br></code></pre></td></tr></table></figure></li>
+<li>若以 git status 查看，會發現記錄只有新增一個檔案而已，而這就是因為先有 Git 記錄才新增 .gitignore 檔案，因此進行以下步驟清除快取並重新加入追蹤，才會套用新的 .gitignore 設定：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 清除本機 Git 的快取，就是將所有檔案移除 Git 的追蹤，但沒有刪除檔案</span><br>$ git <span class="hljs-built_in">rm</span> -r --cached .<br><span class="hljs-comment"># 重新加入 Git 追蹤，這時就會重新套入 .gitignore 設定</span><br>$ git add .<br><span class="hljs-comment"># 重新 commit ，並會忽略設定在 .gitignore 的檔案</span><br>$ git commit -m <span class="hljs-string">&#x27;update .gitignore&#x27;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://shichia.medium.com/gitignore-%E5%BF%BD%E7%95%A5%E9%82%A3%E4%BA%9B%E4%B8%8D%E8%A9%B2%E4%B8%8A%E5%82%B3%E7%9A%84-git-%E6%AA%94%E6%A1%88-2031ac4dc679">https://shichia.medium.com/gitignore-忽略那些不該上傳的-git-檔案-2031ac4dc679</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/GitHub/" class="category-chain-item">GitHub</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/GitHub/Git/" class="category-chain-item">Git</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/GitHub/" class="print-no-link">#GitHub</a>
+      
+        <a href="/blog/tags/Git/" class="print-no-link">#Git</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Git一二三，同步真簡單</div>
+      <div>https://weijhih1226.github.io/blog/2022/08/24/Git相關指令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Satoshi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2022年8月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2022/09/06/%E5%88%A9%E7%94%A8JS%E6%92%88%E7%B6%B2%E8%B7%AF%E8%B3%87%E6%96%99/" title="利用JS撈網路資料">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">利用JS撈網路資料</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2022/08/23/Hexo%E4%BD%BF%E7%94%A8%E8%AA%AA%E6%98%8E/" title="Hexo使用說明">
+                        <span class="hidden-mobile">Hexo使用說明</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>
