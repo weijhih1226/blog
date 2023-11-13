@@ -1,0 +1,6 @@
+# Directories
+public/
+node_modules/
+
+# Files
+db.json
