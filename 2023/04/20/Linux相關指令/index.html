@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Satoshi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux 指令功能全集系統啟動、管理、監看Systemctl：管理systemd服務管理Systemd的各種服務，可利用 systemctl 來操作。 12345678910111213$ systemctl 操作指令 服務名稱[.service]$ systemctl                           # 查詢目前運行中服務$ systemctl -n --lines&#x3D;整數">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用相關指令">
+<meta property="og:url" content="https://weijhih1226.github.io/blog/2023/04/20/Linux%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="小威的漂流手札">
+<meta property="og:description" content="Linux 指令功能全集系統啟動、管理、監看Systemctl：管理systemd服務管理Systemd的各種服務，可利用 systemctl 來操作。 12345678910111213$ systemctl 操作指令 服務名稱[.service]$ systemctl                           # 查詢目前運行中服務$ systemctl -n --lines&#x3D;整數">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-04-20T09:04:00.000Z">
+<meta property="article:modified_time" content="2023-07-07T04:00:00.000Z">
+<meta property="article:author" content="Satoshi">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux常用相關指令｜小威的漂流手札</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"weijhih1226.github.io","root":"/blog/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>小威的漂流手札</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>網誌</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/images/background.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux常用相關指令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-20 17:04" pubdate>
+          2023年4月20日 17:04
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分鐘
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux常用相關指令</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最後更新於：2023年7月7日 12:00
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Linux-指令功能全集"><a href="#Linux-指令功能全集" class="headerlink" title="Linux 指令功能全集"></a>Linux 指令功能全集</h1><h2 id="系統啟動、管理、監看"><a href="#系統啟動、管理、監看" class="headerlink" title="系統啟動、管理、監看"></a>系統啟動、管理、監看</h2><h3 id="Systemctl：管理systemd服務"><a href="#Systemctl：管理systemd服務" class="headerlink" title="Systemctl：管理systemd服務"></a>Systemctl：管理systemd服務</h3><p>管理Systemd的各種服務，可利用 <code>systemctl</code> 來操作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ systemctl 操作指令 服務名稱[.service]<br>$ systemctl                           <span class="hljs-comment"># 查詢目前運行中服務</span><br>$ systemctl -n --lines=整數           <span class="hljs-comment"># 顯示列數</span><br>$ systemctl start &lt;服務名稱&gt;          <span class="hljs-comment"># 啟動服務</span><br>$ systemctl stop &lt;服務名稱&gt;           <span class="hljs-comment"># 停止服務</span><br>$ systemctl restart &lt;服務名稱&gt;        <span class="hljs-comment"># 重新啟動服務</span><br>$ systemctl status &lt;服務名稱&gt;         <span class="hljs-comment"># 顯示服務狀態</span><br>$ systemctl reload &lt;服務名稱&gt;         <span class="hljs-comment"># 重新載入服務配置(.conf)</span><br>$ systemctl daemon-reload &lt;服務名稱&gt;  <span class="hljs-comment"># 重新載入systemd服務配置(.service)</span><br>$ systemctl <span class="hljs-built_in">enable</span> &lt;服務名稱&gt;         <span class="hljs-comment"># 開機自動啟動服務</span><br>$ systemctl <span class="hljs-built_in">disable</span> &lt;服務名稱&gt;        <span class="hljs-comment"># 開機不自動啟動服務</span><br>$ systemctl is-active &lt;服務名稱&gt;      <span class="hljs-comment"># 目前是否執行服務</span><br>$ systemctl is-enabled &lt;服務名稱&gt;     <span class="hljs-comment"># 開機是否自動啟動服務</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ systemctl list-unit-files --<span class="hljs-built_in">type</span> service --all   <span class="hljs-comment"># 列出所有服務</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Journalctl：查詢systemd日誌"><a href="#Journalctl：查詢systemd日誌" class="headerlink" title="Journalctl：查詢systemd日誌"></a>Journalctl：查詢systemd日誌</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ systemctl status systemd-journald.service   <span class="hljs-comment"># 顯示journal service狀態</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ journalctl -u &lt;服務名稱&gt;                      <span class="hljs-comment"># 只顯示指定systemd單元的訊息</span><br>$ journalctl _SYSTEMD_UNIT=&lt;服務名稱&gt;           <span class="hljs-comment"># 等同-u</span><br>$ journalctl -f                                 <span class="hljs-comment"># 顯示並更新最近的日誌訊息</span><br>$ journalctl -p &lt;0~7&gt;                           <span class="hljs-comment"># 要查看log的最高層級</span><br>$ journalctl --since &lt;YYYY-MM-DD[ HH:MM[:SS]]&gt;  <span class="hljs-comment"># 列出自某時間點之日誌訊息</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>log層級：<ul>
+<li>0 - emerg</li>
+<li>1 - alert</li>
+<li>2 - crit</li>
+<li>3 - err</li>
+<li>4 - warning</li>
+<li>5 - notice</li>
+<li>6 - info</li>
+<li>7 - debug</li>
+</ul>
+</li>
+</ul>
+<h3 id="Systemd設定"><a href="#Systemd設定" class="headerlink" title="Systemd設定"></a>Systemd設定</h3><ul>
+<li><p>功能：</p>
+<ul>
+<li><code>.service</code> - 處理服務</li>
+<li><code>.target</code> - 處理runlevel</li>
+<li><code>.mount</code> - 處理檔案系統掛載</li>
+<li><code>.timer</code> - 處理工作排程</li>
+</ul>
+</li>
+<li><p>目錄：</p>
+<ul>
+<li>&#x2F;etc&#x2F;systemd&#x2F;system - 權限最高</li>
+<li>&#x2F;run&#x2F;systemd&#x2F;system - 權限中等</li>
+<li>&#x2F;lib&#x2F;systemd&#x2F;system或&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system - 權限最低</li>
+</ul>
+</li>
+<li><p>範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs conf">[Unit]<br>Description=A description for this service unit.  # 該systemd服務單元設定檔案的描述<br>After=network.target  # 指定systemd目標單元，確保本單元在systemd目標單元運行後運行。本範例指在網路功能啟用後啟用，以讓本服務單元可正常聯網。<br><br>[Timer]<br>OnStartupSec=5ms<br>OnUnitInactiveSec=10s<br>OnCalendar=*-*-* *:*:00                 # 每分鐘0秒執行<br>Unit=&lt;指定服務&gt;                         # 指定的服務<br><br>[Service]<br>User=user                               # 使用者名稱<br>Group=group                             # 使用者群組<br>WorkingDirectory=/path/to/folder        # 工作目錄<br>Environment=&quot;VARIABLE_1=VALUE_1&quot; &quot;VARIABLE_2=VALUE_2&quot; # 直接定義多重環境變數<br>EnvironmentFile=/path/to/environment    # 環境變數<br>ExecStart=/path/to/program [arguments]  # 本服務單元啟動時要執行的應用程式<br>Restart=always                          # 設定執行程式在怎樣情況關閉時，再執行相同指令<br>RestartSec=3s                           # 關閉後到重啟間隔時間，預設100ms<br><br>[Install]<br>WantedBy=multi-user.target              # 運行該systemd目標單元時，會同時運行本單元<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>Restart</code>可設定為：<ul>
+<li><code>no</code>：不重啟。(預設值)</li>
+<li><code>always</code>：不管什麼原因都會重啟。</li>
+<li><code>on-success</code>：只在成功運行結束後(也就是行程回傳的Exit Status為0的時候)才進行重啟。(這蠻少用)</li>
+<li><code>on-failure</code>：在運行失敗後(行程回傳的Exit Status非為0、被使用Kill信號強制關閉、逾時或是餵狗沒反應時)才進行重啟。</li>
+<li><code>on-abnormal</code>：在意外地運行失敗後(被使用Kill信號強制關閉、逾時或是餵狗沒反應時)才進行重啟。</li>
+<li><code>on-abort</code>：被使用Kill信號強制關閉時才進行重啟。</li>
+<li><code>on-watchdog</code>：餵狗沒反應時才進行重啟。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改自動登出時間"><a href="#修改自動登出時間" class="headerlink" title="修改自動登出時間"></a>修改自動登出時間</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-variable">$TMOUT</span>     <span class="hljs-comment"># 查詢自動登出時間</span><br></code></pre></td></tr></table></figure>
+
+<p>修改<code>/etc/profile</code>或<code>/etc/bashrc</code>或<code>~/.bash_profile</code>或<code>~/.bashrc</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">TMOUT=600   <span class="hljs-comment"># 表示10分鐘之後自動登出</span><br>TMOUT=      <span class="hljs-comment"># 表示關閉自動登出</span><br></code></pre></td></tr></table></figure>
+
+<p>重新啟動bash配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">source</span> ~/.bash_profile</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="更換Shell"><a href="#更換Shell" class="headerlink" title="更換Shell"></a>更換Shell</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt install fish<br>$ curl -L https://get.oh-my.fish | fish<br>$ omf install bobthefish<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">printf</span> <span class="hljs-string">&quot;%s\n&quot;</span> <span class="hljs-variable">$SHELL</span>    <span class="hljs-comment"># 印出當前shell</span><br>$ <span class="hljs-built_in">cat</span> /etc/shells         <span class="hljs-comment"># 列出所有可用shell</span><br>$ yum install zsh<br>$ chsh -s $(<span class="hljs-built_in">which</span> zsh) $(<span class="hljs-built_in">whoami</span>)<br><br>$ git config --global core.autocrlf <span class="hljs-literal">false</span>  <span class="hljs-comment"># github儲存庫為Unix格式，若要離線安裝下載至Windows再上傳至Linux server，須取消自動轉換CRLF</span><br>$ git <span class="hljs-built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh     <span class="hljs-comment"># 下載Oh-my-zsh獲得更多zsh樣式</span><br><br><span class="hljs-built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<p>修改主題，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># ZSH_THEME=&quot;robbyrussell&quot;</span><br>ZSH_THEME=<span class="hljs-string">&quot;agnoster&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="效能分析"><a href="#效能分析" class="headerlink" title="效能分析"></a>效能分析</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ top           <span class="hljs-comment"># 查看CPU、執行緒狀態</span><br>$ <span class="hljs-built_in">uptime</span>        <span class="hljs-comment"># 僅顯示目前時間、主機開機時間、登入使用者數、負載情況</span><br>$ w             <span class="hljs-comment"># 顯示目前登入使用者相關資訊</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>top按鍵功能<ul>
+<li>1：顯示單一&#x2F;多cpu使用情形切換</li>
+</ul>
+</li>
+<li>load average<ul>
+<li>系統每1分鐘、5分鐘、15分鐘的負載情況</li>
+<li>須除以邏輯CPU數量(<code>cat /proc/cpuinfo | grep &quot;processor&quot; | wc -l</code>)</li>
+<li>數值1為飽和、0.7以上須注意</li>
+</ul>
+</li>
+<li>Tasks<ul>
+<li>total - 行程總數</li>
+<li>running - 正在執行</li>
+<li>sleeping - 休眠狀態</li>
+<li>stopped - 已停止</li>
+<li>zombie - 僵屍狀態</li>
+</ul>
+</li>
+<li>CPU<ul>
+<li>us - 用戶空間佔用CPU的百分比</li>
+<li>sy - 內核空間佔用CPU的百分比</li>
+<li>ni - 改變過優先順序的進程佔用CPU的百分比</li>
+<li>wa - IO等待佔用CPU的百分比</li>
+<li>hi - 硬中斷（Hardware IRQ）佔用CPU的百分比</li>
+<li>si - 軟中斷（Software Interrupts）佔用CPU的百分比</li>
+</ul>
+</li>
+<li>KiB Mem<ul>
+<li>total - 實體記憶體容量</li>
+<li>free - 剩餘記憶體容量</li>
+<li>used - 已使用的記憶體容量</li>
+<li>buff&#x2F;cache - 暫存記憶體容量</li>
+</ul>
+</li>
+<li>KiB Swap<ul>
+<li>total - swap總容量</li>
+<li>free - 剩餘swap容量</li>
+<li>used - 已使用的swap容量</li>
+<li>avail Mem - 暫存記憶體容量</li>
+</ul>
+</li>
+<li>Process<ul>
+<li>PID - 行程id（Process ID）</li>
+<li>USER - 使用者</li>
+<li>PR - 優先順序</li>
+<li>NI - nice值（值越小優先權越高）</li>
+<li>VIRT - 該行程使用的虛擬記憶體總量（單位：KB(VIRT&#x3D;SWAP+RES)）</li>
+<li>RES - 該行程使用的、未被使用的實體記憶體大小（單位：KB(RES&#x3D;CODE+DATA)）</li>
+<li>SHR - 共用記憶體大小（單位：KB）</li>
+<li>S - 行程狀態（D：不可中斷的睡眠狀態、R：運行、S：睡眠、T：跟蹤&#x2F;停止、Z：僵屍進程）</li>
+<li>%CPU - 上次更新到現在的CPU時間佔用百分比</li>
+<li>%MEM - 行程使用的實體記憶體百分比</li>
+<li>TIME+ - 行程使用的CPU時間總計（單位：1&#x2F;100秒）</li>
+<li>COMMAND - 行程名稱</li>
+</ul>
+</li>
+</ul>
+<h2 id="Linux系統根目錄介紹"><a href="#Linux系統根目錄介紹" class="headerlink" title="Linux系統根目錄介紹"></a>Linux系統根目錄介紹</h2><ul>
+<li><p>&#x2F;bin</p>
+<ul>
+<li>binary程式所在目錄</li>
+</ul>
+</li>
+<li><p>&#x2F;boot</p>
+<ul>
+<li>系統啟動核心文件</li>
+</ul>
+</li>
+<li><p>&#x2F;dev</p>
+<ul>
+<li>系統設備文件</li>
+</ul>
+</li>
+<li><p>&#x2F;etc</p>
+<ul>
+<li>系統及應用軟體的配置文件</li>
+<li>&#x2F;etc&#x2F;passwd - 記錄用戶訊息</li>
+</ul>
+</li>
+<li><p>&#x2F;home</p>
+<ul>
+<li>所有使用者的個人文件</li>
+</ul>
+</li>
+<li><p>&#x2F;lib</p>
+<ul>
+<li>共享函式庫</li>
+<li>類似Windows系統之動態函式庫(.dll)</li>
+</ul>
+</li>
+<li><p>&#x2F;lib64</p>
+<ul>
+<li>64位元系統之共享函式庫</li>
+</ul>
+</li>
+<li><p>&#x2F;lost+found</p>
+<ul>
+<li>保存遺失文件</li>
+</ul>
+</li>
+<li><p>&#x2F;media</p>
+<ul>
+<li>可移動設備的掛載目錄</li>
+</ul>
+</li>
+<li><p>&#x2F;mnt</p>
+<ul>
+<li>掛載設備目錄</li>
+</ul>
+</li>
+<li><p>&#x2F;opt</p>
+<ul>
+<li>option - 目錄是給第三方的軟體放置的目錄，也就是給那些自行額外安裝的軟體放的目錄。</li>
+</ul>
+</li>
+</ul>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://magiclen.org/linux-init-application-service/">https://magiclen.org/linux-init-application-service/</a></li>
+<li><a target="_blank" rel="noopener" href="https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A">https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.xuite.net/zerofirst/blog/147985077">https://blog.xuite.net/zerofirst/blog/147985077</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/Linux/" class="print-no-link">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux常用相關指令</div>
+      <div>https://weijhih1226.github.io/blog/2023/04/20/Linux相關指令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Satoshi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2023年4月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/04/20/MySQL%E6%8C%87%E4%BB%A4/" title="MySQL指令">
+                        <span class="hidden-mobile">MySQL指令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>
