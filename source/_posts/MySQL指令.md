@@ -6,10 +6,10 @@ date: 2023/04/20 17:04
 updated: 2023/04/20 17:00
 ---
 
-# MySQL常用指令
+## MySQL常用指令
 
 ```bash
-$ mysql -u <username> -p        # 登入
+mysql -u <username> -p        # 登入
 ```
 
 ```sql
@@ -39,15 +39,15 @@ VALUES(<column1 data>, <column2 data>),
 
 ```
 
-# 資料庫階層架構
+## 資料庫階層架構
 
 - 資料庫(database)
   - 資料表(table)
     - 欄位(column)
 
-# 資料類型
+## 資料類型
 
-## 數值類型
+### 數值類型
 
 - 整數 (Integer)
   
@@ -80,12 +80,12 @@ VALUES(<column1 data>, <column2 data>),
   - M：總共位數(最小1、最大64、預設1)
   - 儲存方式：b'1'
   - 顯示方式：
-    - <column>+0 : 十進位
-    - bin(<column>+0) : 二進位
-    - oct(<column>+0) : 八進位
-    - hex(<column>+0) : 十六進位
+    - <column_name>+0 : 十進位
+    - bin(<column_name>+0) : 二進位
+    - oct(<column_name>+0) : 八進位
+    - hex(<column_name>+0) : 十六進位
 
-## 時間類型
+### 時間類型
 
 - DATE
   - 日期：YYYY-MM-DD
@@ -115,6 +115,7 @@ VALUES(<column1 data>, <column2 data>),
   - 會隨著 timezone 改變
   - 預設當前時間
   - SELECT NOW()：查看系統當前時間
+
   ```sql
   > <column> TIMESTAMP
   > <column> TIMESTAMP DEFAULT NOW() ON UPDATE NOW()    -- 同上
@@ -126,7 +127,7 @@ VALUES(<column1 data>, <column2 data>),
   - SET time_zone = "system"：更改時區為系統當前時區
   - time_zone 也可用國家名稱設置
 
-# 過濾條件
+## 過濾條件
 
 形式：`SELECT * FROM <table> WHERE <conditions>;`
 
@@ -137,13 +138,14 @@ VALUES(<column1 data>, <column2 data>),
 ```
 
 - 模糊搜尋（例如：顯示包含i的資料，不區分大小寫）
+
 ```sql
 > SELECT * FROM <table> WHERE <column> LIKE "%i%";      -- %代表任意字符
 > SELECT * FROM <table> WHERE <column> LIKE "_i_";      -- _代表1個任意字符
 > SELECT * FROM <table> WHERE <column> LIKE "%\%i%";    -- 顯示包含%i的資料
 ```
 
-# 新增資料表
+## 新增資料表
 
 形式：`CREATE TABLE(<column> <data type>);`
 
@@ -160,20 +162,20 @@ VALUES(<column1 data>, <column2 data>),
 );
 ```
 
-# 取別名
+## 取別名
 
 ```sql
 > SELECT <column> AS <alias> FROM <table>;
 ```
 
-# 更新及刪除資料
+## 更新及刪除資料
 
 ```sql
 > UPDATE <table> SET <column> = "XXX" WHERE <conditions>;
 > DELETE FROM <table> WHERE <conditions>;
 ```
 
-# 字串處理函式
+## 字串處理函式
 
 ```sql
 > SELECT CONCAT(<column1>, <column2>) AS <別名> FROM <table>;   -- 串接字串(<column1><column2>)
@@ -190,7 +192,7 @@ VALUES(<column1 data>, <column2 data>),
 > SELECT UPPER("Hello World");                      -- 轉大寫(HELLO WORLD)
 ```
 
-# 排序篩選
+## 排序篩選
 
 ```sql
 > SELECT * FROM <table> ORDER BY <column>;          -- 依照column升序排序
@@ -200,7 +202,7 @@ VALUES(<column1 data>, <column2 data>),
 > SELECT * FROM <table> LIMIT 2, 4;                 -- 顯示第2筆後4筆資料
 ```
 
-# 資料統計
+## 資料統計
 
 ```sql
 > SELECT COUNT(*) FROM <table>;                     -- 計算資料數量
@@ -213,7 +215,7 @@ VALUES(<column1 data>, <column2 data>),
 > SELECT COUNT(<column>) FROM <table> GROUP BY <column> HAVING <column1> = "XXX";   -- 過濾GROUP BY後資料
 ```
 
-# 更新欄位
+## 更新欄位
 
 ```sql
 > ALTER TABLE <name> ADD column3 INT PRIMARY KEY AUTO_INCREMENT;    -- 新增欄位
@@ -222,7 +224,9 @@ VALUES(<column1 data>, <column2 data>),
 > ALTER TABLE <name> MODIFY <column> <data_type>;                   -- 更改欄位性質
 ```
 
+---
 
-# 參考資料
-1. https://hackmd.io/@kenny88881234/HJ_KDx1xS
-2. https://dev.mysql.com/doc/refman/5.7/en/numeric-types.html
+## 參考資料
+
+1. <https://hackmd.io/@kenny88881234/HJ_KDx1xS>
+2. <https://dev.mysql.com/doc/refman/5.7/en/numeric-types.html>

@@ -6,7 +6,7 @@ date: 2023/01/18 16:45
 updated: 2023/07/07 12:00
 ---
 
-# 常用指令
+## 常用指令
 
 ```console
 > django-admin startproject <專案名稱>      # 建立專案
@@ -18,15 +18,15 @@ updated: 2023/07/07 12:00
 > python manage.py changepassword admin     # 修改admin密碼
 ```
 
-# 安裝與建立專案、應用程式
+## 安裝與建立專案、應用程式
 
-## 安裝Django套件
+### 安裝Django套件
 
 ```console
 > conda install django
 ```
 
-## 建立Django專案
+### 建立Django專案
 
 ```console
 > django-admin startproject <專案名稱>
@@ -43,7 +43,7 @@ updated: 2023/07/07 12:00
     - urls.py - url配置檔
     - wsgi.py - 網頁伺服器和Django介面設定檔
 
-## 建立Application應用程式
+### 建立Application應用程式
 
 ```console
 > python manage.py startapp <應用程式名稱>
@@ -62,7 +62,7 @@ updated: 2023/07/07 12:00
     - tests.py
     - views.py
 
-### 建立必要目錄
+#### 建立必要目錄
 
 - \project1
   - manage.py
@@ -74,13 +74,13 @@ updated: 2023/07/07 12:00
     - \js
     - \img
 
-### 建立migration資料檔
+#### 建立migration資料檔
 
 ```console
 > python manage.py makemigrations
 ```
 
-### 模型與資料庫同步
+#### 模型與資料庫同步
 
 ```console
 > python manage.py migrate
@@ -88,13 +88,13 @@ updated: 2023/07/07 12:00
 
 會在專案目錄下建立`db.sqlite3`檔。
 
-### 啟動server
+#### 啟動server
 
 ```console
 > python manage.py runserver
 ```
 
-## 環境設定
+### 環境設定
 
 ```python
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -119,7 +119,7 @@ STATICFILES_DIRS = [        # 加入static路徑
 ]
 ```
 
-### 更改資料庫
+#### 更改資料庫
 
 可使用PostgreSQL、MariaDB、MySQL或Oracle。
 
@@ -198,6 +198,8 @@ default-character-set = utf8
 port = 3306
 ```
 
-# 參考資料
+---
 
-1. https://blog.hungwin.com.tw/windows-server-mysql-community-install/
+## 參考資料
+
+1. <https://blog.hungwin.com.tw/windows-server-mysql-community-install/>

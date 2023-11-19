@@ -8,14 +8,16 @@ updated: 2023/11/15 11:52
 
 Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。
 
-# Git指令全集
-## 概念
+## Git指令全集
+
+### 概念
+
 0. 初始化git工作目錄
 
    狀態：未初始化
 
    ```bash
-   $ git init
+   git init
    ```
 
    初始化後，目錄下新增.git目錄。
@@ -79,28 +81,27 @@ Git是一個多工團隊協作版控的好用工具，雖然一開始的概念�
       
       ```
 
-
-## 常用指令
+### 常用指令
 
 ```bash
-$ git init                  # 進行版本控制（此時就會有.git目錄產生）
-$ git status                # git狀態
-$ git add .                 # 將檔案加至暫存區
-$ git commit -m "提交訊息"  # 提交檔案至儲存庫
-$ git filter-branch --tree-filter "rm -f config/database.yml"   # 針對過去的提交批次修改紀錄並提交
+git init                  # 進行版本控制（此時就會有.git目錄產生）
+git status                # git狀態
+git add .                 # 將檔案加至暫存區
+git commit -m "提交訊息"  # 提交檔案至儲存庫
+git filter-branch --tree-filter "rm -f config/database.yml"   # 針對過去的提交批次修改紀錄並提交
 ```
 
-## 將存放庫初始化
+### 將存放庫初始化
 
 首先必須要先將Git本地的存放庫初始化啦！
 
 到了想要透過Git監控的目錄git init，此時在目錄下會多出.git的隱藏目錄，這就相當於在VS code下在原始檔控制中的「將存放庫初始化」的功能。
 
 ```bash
-$ git init  # 在當前目錄下創建.git以監控版更
+git init  # 在當前目錄下創建.git以監控版更
 ```
 
-## 查看當前git狀態
+### 查看當前git狀態
 
 先透過git status來查看當前git狀態。
 
@@ -121,7 +122,7 @@ Untracked files:
 
 目錄下加入.gitkeep則是強制git在檢查時，將空目錄也涵蓋進來。
 
-## 一、add（加入）untracked（未追蹤）檔案至暫存的變更
+### 一、add（加入）untracked（未追蹤）檔案至暫存的變更
 
 當在目錄當中新增的檔案，只要是非空目錄、未被.gitignore排除檢查的檔案，或者並非是另一個含有.git的目錄，都會被列為檢查對象。
 
@@ -132,7 +133,7 @@ Untracked files:
 假設我們先新增一個test.md檔，這時候git status會列在untracked，於是我們git add：
 
 ```bash
-$ git add test.md
+git add test.md
 ```
 
 這時候再git status，會看到檔案已被加入：
@@ -168,7 +169,7 @@ Untracked files:
 
 像是Hexo部分目錄本身即含有git版控功能，因此部分目錄無法同步加入追蹤。
 
-## 二、新增訊息並commit（提交）
+### 二、新增訊息並commit（提交）
 
 當我們新增檔案或修改某些檔案裡的文字時，可以利用git commit分批提交更新訊息，把每一次的更新訊息記錄下來：
 
@@ -185,15 +186,15 @@ $ git commit -m "add test.md"
 
 在提交之後，會發現本地端也新增了master分支，代表我們提交的內容會在我們本地的master分支裡。每修改某個檔案都可以在訊息欄做備註。但我們要推送的是遠端分支，而不是本地分支，要確定要提交上去的是哪一個分支。
 
-## 三、push（推送）至remote repository（遠端儲存庫）
+### 三、push（推送）至remote repository（遠端儲存庫）
 
 緊接著，你在工作目錄中陸陸續續新增的檔案，要放到遠端儲存庫供他人使用，就必須先將遠端儲存庫加入路徑之中。Github儲存庫URL在頁面右上角的「code」當中，使用HTTPS或SSH都可以，將想要放置檔案的Github儲存庫URL透過git remote add加入即可。
 
 ```bash
-$ git remote add <遠端名稱> <遠端儲存庫URL>   # 將該遠端加入fetch跟push的路徑
-$ git remote -v                               # 查看遠端分支名稱及路徑
-$ git remote remove <遠端名稱>                # 對應之移除指令
-$ git remote rename <原遠端名稱> <新遠端名稱> # 更改遠端名稱
+git remote add <遠端名稱> <遠端儲存庫URL>   # 將該遠端加入fetch跟push的路徑
+git remote -v                               # 查看遠端分支名稱及路徑
+git remote remove <遠端名稱>                # 對應之移除指令
+git remote rename <原遠端名稱> <新遠端名稱> # 更改遠端名稱
 ```
 
 以遠端名稱為github為例：
@@ -218,59 +219,63 @@ $ git branch -a               # 查看所有分支名稱（本地及遠端）
 利用git checkout則可以切換分支。
 
 ```bash
-$ git checkout <分支名稱>
-$ git checkout -b <新的分支名稱>
+git checkout <分支名稱>
+git checkout -b <新的分支名稱>
 ```
 
 例如我們如果想將本地端的檔案同步到遠端的main分支上：
 
 ```bash
-$ git checkout main
+git checkout main
 ```
 
 ```bash
-$ git push <遠端名稱> <分支名稱>
+git push <遠端名稱> <分支名稱>
 ```
 
 例如：
 
 ```bash
-$ git push github main
+git push github main
 ```
 
-## 其他常用指令
+### 其他常用指令
 
 ```bash
-$ git branch <分支名稱>                               # 建立本地分支
-$ git branch -d <分支名稱>                            # 刪除本地分支
-$ git branch <-m|--move> [<舊分支>] <新分支>          # 移動／更名分支
-$ git branch <-M|--move --force> [<舊分支>] <新分支>  # 強制移動／更名分支
-$ git push <遠端名稱> --delete <遠端分支名稱>         # 刪除遠端分支
-$ git push <遠端名稱> :<遠端分支名稱>                 # 刪除遠端分支
-$ git clone <遠端專案URL> -b <分支名稱>               # 複製遠端分支
-$ git pull <遠端名稱> <遠端分支名稱>:<本地分支名稱>   # git fetch + git merge
+git branch <分支名稱>                               # 建立本地分支
+git branch -d <分支名稱>                            # 刪除本地分支
+git branch <-m|--move> [<舊分支>] <新分支>          # 移動／更名分支
+git branch <-M|--move --force> [<舊分支>] <新分支>  # 強制移動／更名分支
+git push <遠端名稱> --delete <遠端分支名稱>         # 刪除遠端分支
+git push <遠端名稱> :<遠端分支名稱>                 # 刪除遠端分支
+git clone <遠端專案URL> -b <分支名稱>               # 複製遠端分支
+git pull <遠端名稱> <遠端分支名稱>:<本地分支名稱>   # git fetch + git merge
 ```
 
-### 關於git組態
+#### 關於git組態
 
 ```bash
-$ git config --global core.autocrlf true      # 自動轉換CRLF
-$ git config --global user.name "xxx"         # 使用者名稱
-$ git config --global user.email "xxx@xx.com" # 使用者電子郵件
+git config --global core.autocrlf true      # 自動轉換CRLF
+git config --global user.name "xxx"         # 使用者名稱
+git config --global user.email "xxx@xx.com" # 使用者電子郵件
 ```
 
-### git忽略追蹤
+#### git忽略追蹤
+
 - 狀況一：新增過濾條件**後新增的檔案**
   - 符合規則 Git 就不會去追蹤。
 - 狀況二：新增過濾條件**前新增的檔案**
   - 沒有額外處理還是會被追蹤。
   1. 於專案根目錄新增 `.gitignore` 檔案。
   2. 於檔案內新增需要忽略的檔案、目錄等，例如：
+
      ```yaml
      *.conf          # 檔案
      __pycache__/    # 目錄
      ```
+
   3. 若以 git status 查看，會發現記錄只有新增一個檔案而已，而這就是因為先有 Git 記錄才新增 .gitignore 檔案，因此進行以下步驟清除快取並重新加入追蹤，才會套用新的 .gitignore 設定：
+
      ```bash
      # 清除本機 Git 的快取，就是將所有檔案移除 Git 的追蹤，但沒有刪除檔案
      $ git rm -r --cached .
@@ -280,5 +285,8 @@ $ git config --global user.email "xxx@xx.com" # 使用者電子郵件
      $ git commit -m 'update .gitignore'
      ```
 
+---
+
 ## 參考資料
-- https://shichia.medium.com/gitignore-忽略那些不該上傳的-git-檔案-2031ac4dc679
+
+- <https://shichia.medium.com/gitignore-忽略那些不該上傳的-git-檔案-2031ac4dc679>
