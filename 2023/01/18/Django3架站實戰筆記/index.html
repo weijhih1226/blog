@@ -26,8 +26,8 @@
 <meta property="article:published_time" content="2023-01-18T08:45:00.000Z">
 <meta property="article:modified_time" content="2023-07-07T04:00:00.000Z">
 <meta property="article:author" content="Satoshi">
-<meta property="article:tag" content="Python">
 <meta property="article:tag" content="Django">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -292,11 +292,11 @@
             
               <div class="markdown-body">
                 
-                <h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">django-admin startproject &lt;專案名稱&gt;      <span class="hljs-comment"># 建立專案</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py startapp &lt;應用程式名稱&gt;  <span class="hljs-comment"># 新增應用程式</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py makemigrations           <span class="hljs-comment"># 建立資料檔</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py migrate                  <span class="hljs-comment"># 同步模型與資料庫</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py runserver                <span class="hljs-comment"># 啟動server</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py createsuperuser          <span class="hljs-comment"># 建立superuser</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py changepassword admin     <span class="hljs-comment"># 修改admin密碼</span></span><br></code></pre></td></tr></table></figure>
+                <h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">django-admin startproject &lt;專案名稱&gt;      <span class="hljs-comment"># 建立專案</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py startapp &lt;應用程式名稱&gt;  <span class="hljs-comment"># 新增應用程式</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py makemigrations           <span class="hljs-comment"># 建立資料檔</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py migrate                  <span class="hljs-comment"># 同步模型與資料庫</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py runserver                <span class="hljs-comment"># 啟動server</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py createsuperuser          <span class="hljs-comment"># 建立superuser</span></span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py changepassword admin     <span class="hljs-comment"># 修改admin密碼</span></span><br></code></pre></td></tr></table></figure>
 
-<h1 id="安裝與建立專案、應用程式"><a href="#安裝與建立專案、應用程式" class="headerlink" title="安裝與建立專案、應用程式"></a>安裝與建立專案、應用程式</h1><h2 id="安裝Django套件"><a href="#安裝Django套件" class="headerlink" title="安裝Django套件"></a>安裝Django套件</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">conda install django</span><br></code></pre></td></tr></table></figure>
+<h2 id="安裝與建立專案、應用程式"><a href="#安裝與建立專案、應用程式" class="headerlink" title="安裝與建立專案、應用程式"></a>安裝與建立專案、應用程式</h2><h3 id="安裝Django套件"><a href="#安裝Django套件" class="headerlink" title="安裝Django套件"></a>安裝Django套件</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">conda install django</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="建立Django專案"><a href="#建立Django專案" class="headerlink" title="建立Django專案"></a>建立Django專案</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">django-admin startproject &lt;專案名稱&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="建立Django專案"><a href="#建立Django專案" class="headerlink" title="建立Django專案"></a>建立Django專案</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">django-admin startproject &lt;專案名稱&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>建立專案之後，會在該目錄下建立兩層&lt;專案名稱&gt;的目錄，&lt;專案名稱&gt;以project1為例：</p>
 <ul>
@@ -313,7 +313,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="建立Application應用程式"><a href="#建立Application應用程式" class="headerlink" title="建立Application應用程式"></a>建立Application應用程式</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py startapp &lt;應用程式名稱&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="建立Application應用程式"><a href="#建立Application應用程式" class="headerlink" title="建立Application應用程式"></a>建立Application應用程式</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py startapp &lt;應用程式名稱&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>建立應用程式之後，會在第一層project1目錄下建立&lt;應用程式名稱&gt;目錄，&lt;應用程式名稱&gt;以app1為例：</p>
 <ul>
@@ -332,7 +332,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="建立必要目錄"><a href="#建立必要目錄" class="headerlink" title="建立必要目錄"></a>建立必要目錄</h3><ul>
+<h4 id="建立必要目錄"><a href="#建立必要目錄" class="headerlink" title="建立必要目錄"></a>建立必要目錄</h4><ul>
 <li>\project1<ul>
 <li>manage.py</li>
 <li>\project1</li>
@@ -347,16 +347,16 @@
 </ul>
 </li>
 </ul>
-<h3 id="建立migration資料檔"><a href="#建立migration資料檔" class="headerlink" title="建立migration資料檔"></a>建立migration資料檔</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py makemigrations</span><br></code></pre></td></tr></table></figure>
+<h4 id="建立migration資料檔"><a href="#建立migration資料檔" class="headerlink" title="建立migration資料檔"></a>建立migration資料檔</h4><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py makemigrations</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="模型與資料庫同步"><a href="#模型與資料庫同步" class="headerlink" title="模型與資料庫同步"></a>模型與資料庫同步</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py migrate</span><br></code></pre></td></tr></table></figure>
+<h4 id="模型與資料庫同步"><a href="#模型與資料庫同步" class="headerlink" title="模型與資料庫同步"></a>模型與資料庫同步</h4><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py migrate</span><br></code></pre></td></tr></table></figure>
 
 <p>會在專案目錄下建立<code>db.sqlite3</code>檔。</p>
-<h3 id="啟動server"><a href="#啟動server" class="headerlink" title="啟動server"></a>啟動server</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py runserver</span><br></code></pre></td></tr></table></figure>
+<h4 id="啟動server"><a href="#啟動server" class="headerlink" title="啟動server"></a>啟動server</h4><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">python manage.py runserver</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="環境設定"><a href="#環境設定" class="headerlink" title="環境設定"></a>環境設定</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python">BASE_DIR = Path(__file__).resolve().parent.parent<br>DEBUG = <span class="hljs-literal">True</span><br>ALLOWED_HOSTS = []  <span class="hljs-comment"># 若關閉除錯模式，則需指定該參數</span><br>INSTALLED_APPS = [<br>  ...<br>  <span class="hljs-string">&#x27;app1&#x27;</span>            <span class="hljs-comment"># 新增建立的應用程式</span><br>]<br>TEMPLATES = [<br>  &#123;<br>    <span class="hljs-string">&quot;BACKEND&quot;</span>: <span class="hljs-string">&quot;django.template.backends.django.DjangoTemplates&quot;</span>,<br>    <span class="hljs-string">&quot;DIRS&quot;</span>: [BASE_DIR / <span class="hljs-string">&#x27;templates&#x27;</span>],  <span class="hljs-comment"># 指定模板路徑</span><br>        <span class="hljs-string">&quot;APP_DIRS&quot;</span>: <span class="hljs-literal">True</span>,<br>        ...<br>  &#125;,<br>]<br>LANGUAGE_CODE = <span class="hljs-string">&quot;zh-hant&quot;</span>   <span class="hljs-comment"># 改為繁體中文</span><br>TIME_ZONE = <span class="hljs-string">&quot;Asia/Taipei&quot;</span>   <span class="hljs-comment"># 改為臺北時區</span><br>STATICFILES_DIRS = [        <span class="hljs-comment"># 加入static路徑</span><br>    BASE_DIR / <span class="hljs-string">&quot;static&quot;</span>,<br>]<br></code></pre></td></tr></table></figure>
+<h3 id="環境設定"><a href="#環境設定" class="headerlink" title="環境設定"></a>環境設定</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python">BASE_DIR = Path(__file__).resolve().parent.parent<br>DEBUG = <span class="hljs-literal">True</span><br>ALLOWED_HOSTS = []  <span class="hljs-comment"># 若關閉除錯模式，則需指定該參數</span><br>INSTALLED_APPS = [<br>  ...<br>  <span class="hljs-string">&#x27;app1&#x27;</span>            <span class="hljs-comment"># 新增建立的應用程式</span><br>]<br>TEMPLATES = [<br>  &#123;<br>    <span class="hljs-string">&quot;BACKEND&quot;</span>: <span class="hljs-string">&quot;django.template.backends.django.DjangoTemplates&quot;</span>,<br>    <span class="hljs-string">&quot;DIRS&quot;</span>: [BASE_DIR / <span class="hljs-string">&#x27;templates&#x27;</span>],  <span class="hljs-comment"># 指定模板路徑</span><br>        <span class="hljs-string">&quot;APP_DIRS&quot;</span>: <span class="hljs-literal">True</span>,<br>        ...<br>  &#125;,<br>]<br>LANGUAGE_CODE = <span class="hljs-string">&quot;zh-hant&quot;</span>   <span class="hljs-comment"># 改為繁體中文</span><br>TIME_ZONE = <span class="hljs-string">&quot;Asia/Taipei&quot;</span>   <span class="hljs-comment"># 改為臺北時區</span><br>STATICFILES_DIRS = [        <span class="hljs-comment"># 加入static路徑</span><br>    BASE_DIR / <span class="hljs-string">&quot;static&quot;</span>,<br>]<br></code></pre></td></tr></table></figure>
 
-<h3 id="更改資料庫"><a href="#更改資料庫" class="headerlink" title="更改資料庫"></a>更改資料庫</h3><p>可使用PostgreSQL、MariaDB、MySQL或Oracle。</p>
+<h4 id="更改資料庫"><a href="#更改資料庫" class="headerlink" title="更改資料庫"></a>更改資料庫</h4><p>可使用PostgreSQL、MariaDB、MySQL或Oracle。</p>
 <p>以MySQL為例：</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">安裝MySQL Server</a>。</li>
@@ -381,7 +381,8 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs my.cnf">[client]<br>host = localhost<br>database = 資料庫名稱<br>user = 使用者名稱<br>password = 密碼<br>default-character-set = utf8<br>port = 3306<br></code></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ol>
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://blog.hungwin.com.tw/windows-server-mysql-community-install/">https://blog.hungwin.com.tw/windows-server-mysql-community-install/</a></li>
 </ol>
 
@@ -424,9 +425,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/Python/" class="print-no-link">#Python</a>
-      
         <a href="/blog/tags/Django/" class="print-no-link">#Django</a>
+      
+        <a href="/blog/tags/Python/" class="print-no-link">#Python</a>
       
     </div>
   
