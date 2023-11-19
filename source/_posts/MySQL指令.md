@@ -80,10 +80,10 @@ VALUES(<column1 data>, <column2 data>),
   - M：總共位數(最小1、最大64、預設1)
   - 儲存方式：b'1'
   - 顯示方式：
-    - <column_name>+0 : 十進位
-    - bin(<column_name>+0) : 二進位
-    - oct(<column_name>+0) : 八進位
-    - hex(<column_name>+0) : 十六進位
+    - `<column_name>`+0 : 十進位
+    - bin(`<column_name>`+0) : 二進位
+    - oct(`<column_name>`+0) : 八進位
+    - hex(`<column_name>`+0) : 十六進位
 
 ### 時間類型
 
