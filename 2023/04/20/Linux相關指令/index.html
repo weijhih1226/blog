@@ -16,12 +16,12 @@
   <meta name="author" content="Satoshi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linux 指令功能全集系統啟動、管理、監看Systemctl：管理systemd服務管理Systemd的各種服務，可利用 systemctl 來操作。 12345678910111213$ systemctl 操作指令 服務名稱[.service]$ systemctl                           # 查詢目前運行中服務$ systemctl -n --lines&#x3D;整數">
+    <meta name="description" content="Linux 指令功能全集系統啟動、管理、監看Systemctl：管理systemd服務管理Systemd的各種服務，可利用 systemctl 來操作。 12345678910111213systemctl 操作指令 服務名稱[.service]systemctl                           # 查詢目前運行中服務systemctl -n --lines&#x3D;整數">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用相關指令">
 <meta property="og:url" content="https://weijhih1226.github.io/blog/2023/04/20/Linux%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/index.html">
 <meta property="og:site_name" content="小威的漂流手札">
-<meta property="og:description" content="Linux 指令功能全集系統啟動、管理、監看Systemctl：管理systemd服務管理Systemd的各種服務，可利用 systemctl 來操作。 12345678910111213$ systemctl 操作指令 服務名稱[.service]$ systemctl                           # 查詢目前運行中服務$ systemctl -n --lines&#x3D;整數">
+<meta property="og:description" content="Linux 指令功能全集系統啟動、管理、監看Systemctl：管理systemd服務管理Systemd的各種服務，可利用 systemctl 來操作。 12345678910111213systemctl 操作指令 服務名稱[.service]systemctl                           # 查詢目前運行中服務systemctl -n --lines&#x3D;整數">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-04-20T09:04:00.000Z">
 <meta property="article:modified_time" content="2023-07-07T04:00:00.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.2k 字
+          4.1k 字
         
       </span>
     
@@ -291,14 +291,14 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Linux-指令功能全集"><a href="#Linux-指令功能全集" class="headerlink" title="Linux 指令功能全集"></a>Linux 指令功能全集</h1><h2 id="系統啟動、管理、監看"><a href="#系統啟動、管理、監看" class="headerlink" title="系統啟動、管理、監看"></a>系統啟動、管理、監看</h2><h3 id="Systemctl：管理systemd服務"><a href="#Systemctl：管理systemd服務" class="headerlink" title="Systemctl：管理systemd服務"></a>Systemctl：管理systemd服務</h3><p>管理Systemd的各種服務，可利用 <code>systemctl</code> 來操作。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ systemctl 操作指令 服務名稱[.service]<br>$ systemctl                           <span class="hljs-comment"># 查詢目前運行中服務</span><br>$ systemctl -n --lines=整數           <span class="hljs-comment"># 顯示列數</span><br>$ systemctl start &lt;服務名稱&gt;          <span class="hljs-comment"># 啟動服務</span><br>$ systemctl stop &lt;服務名稱&gt;           <span class="hljs-comment"># 停止服務</span><br>$ systemctl restart &lt;服務名稱&gt;        <span class="hljs-comment"># 重新啟動服務</span><br>$ systemctl status &lt;服務名稱&gt;         <span class="hljs-comment"># 顯示服務狀態</span><br>$ systemctl reload &lt;服務名稱&gt;         <span class="hljs-comment"># 重新載入服務配置(.conf)</span><br>$ systemctl daemon-reload &lt;服務名稱&gt;  <span class="hljs-comment"># 重新載入systemd服務配置(.service)</span><br>$ systemctl <span class="hljs-built_in">enable</span> &lt;服務名稱&gt;         <span class="hljs-comment"># 開機自動啟動服務</span><br>$ systemctl <span class="hljs-built_in">disable</span> &lt;服務名稱&gt;        <span class="hljs-comment"># 開機不自動啟動服務</span><br>$ systemctl is-active &lt;服務名稱&gt;      <span class="hljs-comment"># 目前是否執行服務</span><br>$ systemctl is-enabled &lt;服務名稱&gt;     <span class="hljs-comment"># 開機是否自動啟動服務</span><br></code></pre></td></tr></table></figure>
+                <h2 id="Linux-指令功能全集"><a href="#Linux-指令功能全集" class="headerlink" title="Linux 指令功能全集"></a>Linux 指令功能全集</h2><h3 id="系統啟動、管理、監看"><a href="#系統啟動、管理、監看" class="headerlink" title="系統啟動、管理、監看"></a>系統啟動、管理、監看</h3><h4 id="Systemctl：管理systemd服務"><a href="#Systemctl：管理systemd服務" class="headerlink" title="Systemctl：管理systemd服務"></a>Systemctl：管理systemd服務</h4><p>管理Systemd的各種服務，可利用 <code>systemctl</code> 來操作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl 操作指令 服務名稱[.service]<br>systemctl                           <span class="hljs-comment"># 查詢目前運行中服務</span><br>systemctl -n --lines=整數           <span class="hljs-comment"># 顯示列數</span><br>systemctl start &lt;服務名稱&gt;          <span class="hljs-comment"># 啟動服務</span><br>systemctl stop &lt;服務名稱&gt;           <span class="hljs-comment"># 停止服務</span><br>systemctl restart &lt;服務名稱&gt;        <span class="hljs-comment"># 重新啟動服務</span><br>systemctl status &lt;服務名稱&gt;         <span class="hljs-comment"># 顯示服務狀態</span><br>systemctl reload &lt;服務名稱&gt;         <span class="hljs-comment"># 重新載入服務配置(.conf)</span><br>systemctl daemon-reload &lt;服務名稱&gt;  <span class="hljs-comment"># 重新載入systemd服務配置(.service)</span><br>systemctl <span class="hljs-built_in">enable</span> &lt;服務名稱&gt;         <span class="hljs-comment"># 開機自動啟動服務</span><br>systemctl <span class="hljs-built_in">disable</span> &lt;服務名稱&gt;        <span class="hljs-comment"># 開機不自動啟動服務</span><br>systemctl is-active &lt;服務名稱&gt;      <span class="hljs-comment"># 目前是否執行服務</span><br>systemctl is-enabled &lt;服務名稱&gt;     <span class="hljs-comment"># 開機是否自動啟動服務</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ systemctl list-unit-files --<span class="hljs-built_in">type</span> service --all   <span class="hljs-comment"># 列出所有服務</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl list-unit-files --<span class="hljs-built_in">type</span> service --all   <span class="hljs-comment"># 列出所有服務</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="Journalctl：查詢systemd日誌"><a href="#Journalctl：查詢systemd日誌" class="headerlink" title="Journalctl：查詢systemd日誌"></a>Journalctl：查詢systemd日誌</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ systemctl status systemd-journald.service   <span class="hljs-comment"># 顯示journal service狀態</span><br></code></pre></td></tr></table></figure>
+<h4 id="Journalctl：查詢systemd日誌"><a href="#Journalctl：查詢systemd日誌" class="headerlink" title="Journalctl：查詢systemd日誌"></a>Journalctl：查詢systemd日誌</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl status systemd-journald.service   <span class="hljs-comment"># 顯示journal service狀態</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ journalctl -u &lt;服務名稱&gt;                      <span class="hljs-comment"># 只顯示指定systemd單元的訊息</span><br>$ journalctl _SYSTEMD_UNIT=&lt;服務名稱&gt;           <span class="hljs-comment"># 等同-u</span><br>$ journalctl -f                                 <span class="hljs-comment"># 顯示並更新最近的日誌訊息</span><br>$ journalctl -p &lt;0~7&gt;                           <span class="hljs-comment"># 要查看log的最高層級</span><br>$ journalctl --since &lt;YYYY-MM-DD[ HH:MM[:SS]]&gt;  <span class="hljs-comment"># 列出自某時間點之日誌訊息</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">journalctl -u &lt;服務名稱&gt;                      <span class="hljs-comment"># 只顯示指定systemd單元的訊息</span><br>journalctl _SYSTEMD_UNIT=&lt;服務名稱&gt;           <span class="hljs-comment"># 等同-u</span><br>journalctl -f                                 <span class="hljs-comment"># 顯示並更新最近的日誌訊息</span><br>journalctl -p &lt;0~7&gt;                           <span class="hljs-comment"># 要查看log的最高層級</span><br>journalctl --since &lt;YYYY-MM-DD[ HH:MM[:SS]]&gt;  <span class="hljs-comment"># 列出自某時間點之日誌訊息</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>log層級：<ul>
@@ -313,7 +313,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Systemd設定"><a href="#Systemd設定" class="headerlink" title="Systemd設定"></a>Systemd設定</h3><ul>
+<h4 id="Systemd設定"><a href="#Systemd設定" class="headerlink" title="Systemd設定"></a>Systemd設定</h4><ul>
 <li><p>功能：</p>
 <ul>
 <li><code>.service</code> - 處理服務</li>
@@ -331,6 +331,7 @@
 </li>
 <li><p>範例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs conf">[Unit]<br>Description=A description for this service unit.  # 該systemd服務單元設定檔案的描述<br>After=network.target  # 指定systemd目標單元，確保本單元在systemd目標單元運行後運行。本範例指在網路功能啟用後啟用，以讓本服務單元可正常聯網。<br><br>[Timer]<br>OnStartupSec=5ms<br>OnUnitInactiveSec=10s<br>OnCalendar=*-*-* *:*:00                 # 每分鐘0秒執行<br>Unit=&lt;指定服務&gt;                         # 指定的服務<br><br>[Service]<br>User=user                               # 使用者名稱<br>Group=group                             # 使用者群組<br>WorkingDirectory=/path/to/folder        # 工作目錄<br>Environment=&quot;VARIABLE_1=VALUE_1&quot; &quot;VARIABLE_2=VALUE_2&quot; # 直接定義多重環境變數<br>EnvironmentFile=/path/to/environment    # 環境變數<br>ExecStart=/path/to/program [arguments]  # 本服務單元啟動時要執行的應用程式<br>Restart=always                          # 設定執行程式在怎樣情況關閉時，再執行相同指令<br>RestartSec=3s                           # 關閉後到重啟間隔時間，預設100ms<br><br>[Install]<br>WantedBy=multi-user.target              # 運行該systemd目標單元時，會同時運行本單元<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>Restart</code>可設定為：<ul>
 <li><code>no</code>：不重啟。(預設值)</li>
@@ -345,22 +346,22 @@
 </ul>
 </li>
 </ul>
-<h2 id="修改自動登出時間"><a href="#修改自動登出時間" class="headerlink" title="修改自動登出時間"></a>修改自動登出時間</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-variable">$TMOUT</span>     <span class="hljs-comment"># 查詢自動登出時間</span><br></code></pre></td></tr></table></figure>
+<h3 id="修改自動登出時間"><a href="#修改自動登出時間" class="headerlink" title="修改自動登出時間"></a>修改自動登出時間</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$TMOUT</span>     <span class="hljs-comment"># 查詢自動登出時間</span><br></code></pre></td></tr></table></figure>
 
 <p>修改<code>/etc/profile</code>或<code>/etc/bashrc</code>或<code>~/.bash_profile</code>或<code>~/.bashrc</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">TMOUT=600   <span class="hljs-comment"># 表示10分鐘之後自動登出</span><br>TMOUT=      <span class="hljs-comment"># 表示關閉自動登出</span><br></code></pre></td></tr></table></figure>
 
 <p>重新啟動bash配置：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">source</span> ~/.bash_profile</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bash_profile<br></code></pre></td></tr></table></figure>
 
-<h2 id="更換Shell"><a href="#更換Shell" class="headerlink" title="更換Shell"></a>更換Shell</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt install fish<br>$ curl -L https://get.oh-my.fish | fish<br>$ omf install bobthefish<br></code></pre></td></tr></table></figure>
+<h3 id="更換Shell"><a href="#更換Shell" class="headerlink" title="更換Shell"></a>更換Shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install fish<br>curl -L https://get.oh-my.fish | fish<br>omf install bobthefish<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">printf</span> <span class="hljs-string">&quot;%s\n&quot;</span> <span class="hljs-variable">$SHELL</span>    <span class="hljs-comment"># 印出當前shell</span><br>$ <span class="hljs-built_in">cat</span> /etc/shells         <span class="hljs-comment"># 列出所有可用shell</span><br>$ yum install zsh<br>$ chsh -s $(<span class="hljs-built_in">which</span> zsh) $(<span class="hljs-built_in">whoami</span>)<br><br>$ git config --global core.autocrlf <span class="hljs-literal">false</span>  <span class="hljs-comment"># github儲存庫為Unix格式，若要離線安裝下載至Windows再上傳至Linux server，須取消自動轉換CRLF</span><br>$ git <span class="hljs-built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh     <span class="hljs-comment"># 下載Oh-my-zsh獲得更多zsh樣式</span><br><br><span class="hljs-built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">printf</span> <span class="hljs-string">&quot;%s\n&quot;</span> <span class="hljs-variable">$SHELL</span>    <span class="hljs-comment"># 印出當前shell</span><br><span class="hljs-built_in">cat</span> /etc/shells         <span class="hljs-comment"># 列出所有可用shell</span><br>yum install zsh<br>chsh -s $(<span class="hljs-built_in">which</span> zsh) $(<span class="hljs-built_in">whoami</span>)<br><br>git config --global core.autocrlf <span class="hljs-literal">false</span>  <span class="hljs-comment"># github儲存庫為Unix格式，若要離線安裝下載至Windows再上傳至Linux server，須取消自動轉換CRLF</span><br>git <span class="hljs-built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh     <span class="hljs-comment"># 下載Oh-my-zsh獲得更多zsh樣式</span><br><br><span class="hljs-built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc<br></code></pre></td></tr></table></figure>
 
 <p>修改主題，例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># ZSH_THEME=&quot;robbyrussell&quot;</span><br>ZSH_THEME=<span class="hljs-string">&quot;agnoster&quot;</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="效能分析"><a href="#效能分析" class="headerlink" title="效能分析"></a>效能分析</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ top           <span class="hljs-comment"># 查看CPU、執行緒狀態</span><br>$ <span class="hljs-built_in">uptime</span>        <span class="hljs-comment"># 僅顯示目前時間、主機開機時間、登入使用者數、負載情況</span><br>$ w             <span class="hljs-comment"># 顯示目前登入使用者相關資訊</span><br></code></pre></td></tr></table></figure>
+<h3 id="效能分析"><a href="#效能分析" class="headerlink" title="效能分析"></a>效能分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">top           <span class="hljs-comment"># 查看CPU、執行緒狀態</span><br><span class="hljs-built_in">uptime</span>        <span class="hljs-comment"># 僅顯示目前時間、主機開機時間、登入使用者數、負載情況</span><br>w             <span class="hljs-comment"># 顯示目前登入使用者相關資訊</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>top按鍵功能<ul>
@@ -420,7 +421,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Linux系統根目錄介紹"><a href="#Linux系統根目錄介紹" class="headerlink" title="Linux系統根目錄介紹"></a>Linux系統根目錄介紹</h2><ul>
+<h3 id="Linux系統根目錄介紹"><a href="#Linux系統根目錄介紹" class="headerlink" title="Linux系統根目錄介紹"></a>Linux系統根目錄介紹</h3><ul>
 <li><p>&#x2F;bin</p>
 <ul>
 <li>binary程式所在目錄</li>
@@ -479,7 +480,8 @@
 </ul>
 </li>
 </ul>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://magiclen.org/linux-init-application-service/">https://magiclen.org/linux-init-application-service/</a></li>
 <li><a target="_blank" rel="noopener" href="https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A">https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.xuite.net/zerofirst/blog/147985077">https://blog.xuite.net/zerofirst/blog/147985077</a></li>
@@ -574,12 +576,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/blog/2023/04/20/MySQL%E6%8C%87%E4%BB%A4/" title="MySQL指令">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MySQL指令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2023/04/20/MySQL%E6%8C%87%E4%BB%A4/" title="MySQL指令">
-                        <span class="hidden-mobile">MySQL指令</span>
+                      <a href="/blog/2023/03/31/Docker%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/" title="Docker常用相關指令">
+                        <span class="hidden-mobile">Docker常用相關指令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
