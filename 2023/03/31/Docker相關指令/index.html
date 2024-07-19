@@ -234,7 +234,7 @@
         
         
         
-          47 分鐘
+          48 分鐘
         
       </span>
     
@@ -369,7 +369,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker stop &lt;container&gt;<br>docker rmi &lt;image&gt;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>以上述範例說明 <code>docker compose up -d</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build -t api-image https://github.com/user/api.git<br>docker run --<span class="hljs-built_in">rm</span> -itd --name api-service --restart always -v <span class="hljs-variable">$LOG_PATH</span>:/logs -p 5000:5000 api-image<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build -t api-image https://github.com/user/api.git<br>docker run --<span class="hljs-built_in">rm</span> -itd \<br>--name api-service \<br>--restart always \<br>-v <span class="hljs-variable">$LOG_PATH</span>:/logs \<br>-p 5000:5000 api-image<br></code></pre></td></tr></table></figure>
 
 <p>如有多個volume可以增加tag <code>-v</code> ，同理有多個port也可以增加tag <code>-p</code>。</p>
 </li>
