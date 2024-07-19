@@ -69,12 +69,16 @@
       
       <category>Docker</category>
       
+      <category>Docker Compose</category>
+      
     </categories>
     
     
     <tags>
       
       <tag>Docker</tag>
+      
+      <tag>Docker Compose</tag>
       
     </tags>
     
