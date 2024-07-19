@@ -16,25 +16,25 @@
   <meta name="author" content="Satoshi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。 Git指令全集概念 初始化git工作目錄 狀態：未初始化 1git init  初始化後，目錄下新增.git目錄。">
+    <meta name="description" content="Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它。因此，對於初學者而言，在了解Git指令之前，先要有 local （本地）、 remote （遠端） repository （儲存庫）及各自的 branch （分支）概念，還有就是多跟同事在實務上運用練習，才會更快上手。 Git指令全集概念 初始化git工作目錄 狀態：未初始化 1git init">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git一二三，同步真簡單">
+<meta property="og:title" content="Git一二三，版控真簡單">
 <meta property="og:url" content="https://weijhih1226.github.io/blog/2022/08/24/Git%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4/index.html">
 <meta property="og:site_name" content="小威的漂流手札">
-<meta property="og:description" content="Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。 Git指令全集概念 初始化git工作目錄 狀態：未初始化 1git init  初始化後，目錄下新增.git目錄。">
+<meta property="og:description" content="Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它。因此，對於初學者而言，在了解Git指令之前，先要有 local （本地）、 remote （遠端） repository （儲存庫）及各自的 branch （分支）概念，還有就是多跟同事在實務上運用練習，才會更快上手。 Git指令全集概念 初始化git工作目錄 狀態：未初始化 1git init">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-08-24T06:07:00.000Z">
-<meta property="article:modified_time" content="2024-07-18T10:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-19T06:00:00.000Z">
 <meta property="article:author" content="Satoshi">
-<meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Git一二三，同步真簡單｜小威的漂流手札</title>
+  <title>Git一二三，版控真簡單｜小威的漂流手札</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Git一二三，同步真簡單"></span>
+            <span id="subtitle" data-typed-text="Git一二三，版控真簡單"></span>
           
         </div>
 
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k 字
+          7.1k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          48 分鐘
+          60 分鐘
         
       </span>
     
@@ -279,12 +279,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Git一二三，同步真簡單</h1>
+            <h1 id="seo-header">Git一二三，版控真簡單</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最後更新於：2024年7月18日 18:00
+                    本文最後更新於：2024年7月19日 14:00
                   
                 
               </p>
@@ -292,7 +292,7 @@
             
               <div class="markdown-body">
                 
-                <p>Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它，因此。對於初學者而言，在了解Git指令之前，先要有local（本地）與remote（遠端）repository（儲存庫）的概念，以及各自的branch（分支）之後，或許會比較好入手。</p>
+                <p>Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它。因此，對於初學者而言，在了解Git指令之前，先要有 <code>local</code> （本地）、 <code>remote</code> （遠端） <code>repository</code> （儲存庫）及各自的 <code>branch</code> （分支）概念，還有就是多跟同事在實務上運用練習，才會更快上手。</p>
 <h2 id="Git指令全集"><a href="#Git指令全集" class="headerlink" title="Git指令全集"></a>Git指令全集</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ol start="0">
 <li><p>初始化git工作目錄</p>
 <p>狀態：未初始化</p>
@@ -308,7 +308,7 @@
 <li><p>暫存區（Staging Area）</p>
 <p>狀態：等待提交（Changes to be committed）</p>
 <p>數據暫時存放的區域，介於工作區與儲存庫之間。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 暫存區 -&gt; 儲存庫</span><br>$ git commit                   <span class="hljs-comment"># 新開編輯器編輯提交訊息</span><br>$ git commit -m <span class="hljs-string">&quot;提交訊息&quot;</span>     <span class="hljs-comment"># 將暫存區內容移至儲存區</span><br>$ git commit -am <span class="hljs-string">&quot;提交訊息&quot;</span>    <span class="hljs-comment"># 從工作區移至儲存庫，對已在儲存庫的檔案有效</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 暫存區 -&gt; 儲存庫</span><br>$ git commit                  <span class="hljs-comment"># 新開編輯器編輯提交訊息</span><br>$ git commit -m <span class="hljs-string">&quot;提交訊息&quot;</span>     <span class="hljs-comment"># 將暫存區內容移至儲存區</span><br>$ git commit -am <span class="hljs-string">&quot;提交訊息&quot;</span>    <span class="hljs-comment"># 從工作區移至儲存庫，對已在儲存庫的檔案有效</span><br>$ git commit --amend          <span class="hljs-comment"># 編輯最新已提交訊息</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>儲存庫／數據庫（Repository，簡稱repo）</p>
 <p>狀態：已提交（Committed）</p>
@@ -316,21 +316,21 @@
 <ol>
 <li><p>本地端儲存庫（Local）</p>
 <p>為了方便自己使用的儲存庫，通常是個人開發的電腦或機台。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 本地端 -&gt; 遠端儲存庫</span><br>$ git push        <span class="hljs-comment"># 推送到遠端儲存庫</span><br><br><span class="hljs-comment"># 本地端複製</span><br>$ git <span class="hljs-built_in">clone</span> &lt;本地目錄名稱&gt; &lt;新本地目錄名稱|路徑&gt;  <span class="hljs-comment"># 複製本地儲存庫至指定目錄</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 本地端複製</span><br>$ git <span class="hljs-built_in">clone</span> &lt;本地目錄名稱&gt; &lt;新本地目錄名稱|路徑&gt;  <span class="hljs-comment"># 複製本地儲存庫至指定目錄</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>遠端儲存庫（Remote）</p>
 <p>為了讓多人共享而建立的儲存庫，通常是一個共用的伺服器。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 遠端 -&gt; 本地端儲存庫</span><br>$ git fetch &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;     <span class="hljs-comment"># 下載遠端指定分支</span><br>$ git fetch --all                         <span class="hljs-comment"># 下載遠端所有分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt;                    <span class="hljs-comment"># 下載遠端預設分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt; -b &lt;本地分支名稱&gt;  <span class="hljs-comment"># 下載遠端預設分支至指定本地分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt; &lt;目錄名稱|路徑&gt;    <span class="hljs-comment"># 下載遠端預設分支至指定目錄</span><br><br><span class="hljs-comment"># 遠端儲存庫 -&gt; 工作區</span><br>$ git pull &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;:&lt;本地分支名稱&gt;   <span class="hljs-comment"># git fetch + git merge</span><br><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 遠端 -&gt; 本地端儲存庫</span><br>$ git fetch &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;     <span class="hljs-comment"># 下載遠端指定分支</span><br>$ git fetch --all                      <span class="hljs-comment"># 下載遠端所有分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt;                  <span class="hljs-comment"># 下載遠端預設分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt; -b &lt;本地分支名稱&gt;  <span class="hljs-comment"># 下載遠端預設分支至指定本地分支</span><br>$ git <span class="hljs-built_in">clone</span> &lt;遠端名稱&gt; &lt;目錄名稱|路徑&gt;    <span class="hljs-comment"># 下載遠端預設分支至指定目錄</span><br><br><span class="hljs-comment"># 遠端儲存庫 -&gt; 工作區</span><br>$ git pull &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;:&lt;本地分支名稱&gt;   <span class="hljs-comment"># git fetch + git merge</span><br><br><span class="hljs-comment"># 本地端 -&gt; 遠端儲存庫</span><br>$ git push [遠端名稱] [遠端分支名稱]      <span class="hljs-comment"># 推送到遠端儲存庫</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
-<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init                  <span class="hljs-comment"># 進行版本控制（此時就會有.git目錄產生）</span><br>git status                <span class="hljs-comment"># git狀態</span><br>git add .                 <span class="hljs-comment"># 將檔案加至暫存區</span><br>git commit -m <span class="hljs-string">&quot;提交訊息&quot;</span>  <span class="hljs-comment"># 提交檔案至儲存庫</span><br>git filter-branch --tree-filter <span class="hljs-string">&quot;rm -f config/database.yml&quot;</span>   <span class="hljs-comment"># 針對過去的提交批次修改紀錄並提交</span><br></code></pre></td></tr></table></figure>
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init                   <span class="hljs-comment"># 進行版本控制（此時就會有.git目錄產生）</span><br>git status                 <span class="hljs-comment"># git狀態</span><br>git add .                  <span class="hljs-comment"># 將當前目錄以下檔案加至暫存區</span><br>git add -A                 <span class="hljs-comment"># 將所有檔案加至暫存區</span><br>git commit -m <span class="hljs-string">&quot;提交訊息&quot;</span>    <span class="hljs-comment"># 提交檔案至儲存庫</span><br>git commit --amend         <span class="hljs-comment"># 編輯最新已提交訊息</span><br>git filter-branch --tree-filter <span class="hljs-string">&quot;rm -f config/database.yml&quot;</span>   <span class="hljs-comment"># 針對過去的提交批次修改紀錄並提交</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="將存放庫初始化"><a href="#將存放庫初始化" class="headerlink" title="將存放庫初始化"></a>將存放庫初始化</h3><p>首先必須要先將Git本地的存放庫初始化啦！</p>
-<p>到了想要透過Git監控的目錄git init，此時在目錄下會多出.git的隱藏目錄，這就相當於在VS code下在原始檔控制中的「將存放庫初始化」的功能。</p>
+<p>到了想要透過Git監控的目錄 <code>git init</code> ，此時在目錄下會多出.git的隱藏目錄，這就相當於在VS code下在原始檔控制中的「將存放庫初始化」的功能。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init  <span class="hljs-comment"># 在當前目錄下創建.git以監控版更</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="查看當前git狀態"><a href="#查看當前git狀態" class="headerlink" title="查看當前git狀態"></a>查看當前git狀態</h3><p>先透過git status來查看當前git狀態。</p>
+<h3 id="查看當前git狀態"><a href="#查看當前git狀態" class="headerlink" title="查看當前git狀態"></a>查看當前git狀態</h3><p>先透過 <code>git status</code> 來查看當前git狀態。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git status  <span class="hljs-comment"># 查看當前git狀態</span><br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use <span class="hljs-string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="hljs-keyword">in</span> what will be committed)<br>        .gitignore<br></code></pre></td></tr></table></figure>
 
 <p>從輸出的內容，可以看到目前本地的分支名稱為master、沒有任何commit（提交），以及哪些檔案還沒被add（加入）追蹤（untracked）。</p>
@@ -338,8 +338,8 @@
 <p>目錄下加入.gitkeep則是強制git在檢查時，將空目錄也涵蓋進來。</p>
 <h3 id="一、add（加入）untracked（未追蹤）檔案至暫存的變更"><a href="#一、add（加入）untracked（未追蹤）檔案至暫存的變更" class="headerlink" title="一、add（加入）untracked（未追蹤）檔案至暫存的變更"></a>一、add（加入）untracked（未追蹤）檔案至暫存的變更</h3><p>當在目錄當中新增的檔案，只要是非空目錄、未被.gitignore排除檢查的檔案，或者並非是另一個含有.git的目錄，都會被列為檢查對象。</p>
 <p>利用VS code的原始檔控制，會自動偵測已變更的檔案（新增的檔案右方會顯示A(Add)、新增後變更的檔案會顯示M(Modified)），在「變更」欄的右方「+」號則可以將新增或變更的檔案加入到暫存的變更；在「暫存的變更」右方「-」號則是可以選擇取消變更的檔案，等修改好再加進去。</p>
-<p>如果利用指令列，則須透過git status來看各個檔案的情況。</p>
-<p>假設我們先新增一個test.md檔，這時候git status會列在untracked，於是我們git add：</p>
+<p>如果利用指令列，則須透過 <code>git status</code> 來看各個檔案的情況。</p>
+<p>假設我們先新增一個test.md檔，這時候git status會列在untracked，於是我們 <code>git add</code> ：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add test.md<br></code></pre></td></tr></table></figure>
 
 <p>這時候再git status，會看到檔案已被加入：</p>
@@ -355,13 +355,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">Untracked files:<br>  (use <span class="hljs-string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="hljs-keyword">in</span> what will be committed)<br>        themes/fluid/<br></code></pre></td></tr></table></figure>
 
 <p>像是Hexo部分目錄本身即含有git版控功能，因此部分目錄無法同步加入追蹤。</p>
-<h3 id="二、新增訊息並commit（提交）"><a href="#二、新增訊息並commit（提交）" class="headerlink" title="二、新增訊息並commit（提交）"></a>二、新增訊息並commit（提交）</h3><p>當我們新增檔案或修改某些檔案裡的文字時，可以利用git commit分批提交更新訊息，把每一次的更新訊息記錄下來：</p>
+<h3 id="二、新增訊息並commit（提交）"><a href="#二、新增訊息並commit（提交）" class="headerlink" title="二、新增訊息並commit（提交）"></a>二、新增訊息並commit（提交）</h3><p>當我們新增檔案或修改某些檔案裡的文字時，可以利用 <code>git commit</code> 分批提交更新訊息，把每一次的更新訊息記錄下來：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git commit -m <span class="hljs-string">&quot;add test.md&quot;</span><br>[github 1da2962] revise Git相關指令.md<br> 0 file changed, 1 insertions(+)<br> create mode 100644 <span class="hljs-string">&quot;test.md&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>提交之後會顯示提交的分支名稱、提交ID、提交訊息、幾個檔案新增或者被改變。</p>
 <p>每次修改檔案之後，都要記得將檔案再度git add到要提交的行列當中。</p>
 <p>在提交之後，會發現本地端也新增了master分支，代表我們提交的內容會在我們本地的master分支裡。每修改某個檔案都可以在訊息欄做備註。但我們要推送的是遠端分支，而不是本地分支，要確定要提交上去的是哪一個分支。</p>
-<h3 id="三、push（推送）至remote-repo（遠端儲存庫）"><a href="#三、push（推送）至remote-repo（遠端儲存庫）" class="headerlink" title="三、push（推送）至remote repo（遠端儲存庫）"></a>三、push（推送）至remote repo（遠端儲存庫）</h3><p>緊接著，你在工作目錄中陸陸續續新增的檔案，要放到遠端儲存庫供他人使用，就必須先將遠端儲存庫加入路徑之中。Github儲存庫URL在頁面右上角的「code」當中，使用HTTPS或SSH都可以，將想要放置檔案的Github儲存庫URL透過git remote add加入即可。</p>
+<h3 id="三、push（推送）至remote-repo（遠端儲存庫）"><a href="#三、push（推送）至remote-repo（遠端儲存庫）" class="headerlink" title="三、push（推送）至remote repo（遠端儲存庫）"></a>三、push（推送）至remote repo（遠端儲存庫）</h3><p>緊接著，你在工作目錄中陸陸續續新增的檔案，要放到遠端儲存庫供他人使用，就必須先將遠端儲存庫加入路徑之中。Github儲存庫URL在頁面右上角的「code」當中，使用HTTPS或SSH都可以，將想要放置檔案的Github儲存庫URL透過 <code>git remote add</code> 加入即可。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add &lt;遠端名稱&gt; &lt;遠端儲存庫URL&gt;    <span class="hljs-comment"># 將該遠端加入fetch跟push的路徑</span><br>git remote -v                             <span class="hljs-comment"># 查看遠端分支名稱及路徑</span><br>git remote remove &lt;遠端名稱&gt;               <span class="hljs-comment"># 對應之移除指令</span><br>git remote rename &lt;原遠端名稱&gt; &lt;新遠端名稱&gt;  <span class="hljs-comment"># 更改遠端名稱</span><br></code></pre></td></tr></table></figure>
 
 <p>以名稱為github加入遠端儲存庫為例：</p>
@@ -370,29 +370,53 @@
 <p>如果想推送至第2個遠端儲存庫的話，也可以再加入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote add gerrit ssh://weijhih1226@gerrit.twindy.com:29418/weather<br>$ git remote -v   <span class="hljs-comment"># 此時</span><br>github    https://github.com/weijhih1226/blog.git (fetch)<br>github    https://github.com/weijhih1226/blog.git (push)<br>gerrit    ssh://weijhih1226@gerrit.twindy.com:29418/weather (fetch)<br>gerrit    ssh://weijhih1226@gerrit.twindy.com:29418/weather (push)<br></code></pre></td></tr></table></figure>
 
-<p>此時透過指令<code>git remote -v</code>就可以看到有兩個remote repo了。</p>
+<p>此時透過指令 <code>git remote -v</code> 就可以看到有兩個remote repo了。</p>
 <p>如果要查看本地分支與遠端分支的對應可以透過以下指令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git branch -v               <span class="hljs-comment"># 查看branch名稱、commit訊息</span><br>$ git branch -vv              <span class="hljs-comment"># 查看branch名稱（有upstream則會顯示）、commit訊息</span><br>$ git branch -l               <span class="hljs-comment"># 查看分支名稱（本地）</span><br>$ git branch -r               <span class="hljs-comment"># 查看分支名稱（遠端）</span><br>$ git branch -a               <span class="hljs-comment"># 查看所有分支名稱（本地及遠端）</span><br>* master                      <span class="hljs-comment"># 本地分支（目前的分支）</span><br>  remotes/github/gh-pages     <span class="hljs-comment"># 遠端分支</span><br>  remotes/github/main         <span class="hljs-comment"># 遠端分支</span><br></code></pre></td></tr></table></figure>
 
-<p>從上面git branch -a當中，可以看到因為目前本地端是在master分支底下，而遠端則在github底下有自動抓到2個分支。</p>
+<p>從上面 <code>git branch -a</code> 當中，可以看到因為目前本地端是在master分支底下，而遠端則在github底下有自動抓到2個分支。</p>
 <p>如果要將目前的本地分支的fetch及push與遠端分支對應，使得每次 <code>git fetch</code> &#x2F; <code>git pull</code> 或 <code>git push</code> 不用指定remote repo與branch，可以使用以下指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git branch -u &lt;remote repo&gt;/&lt;remote branch&gt;   <span class="hljs-comment"># 將遠端儲存庫的分支加入目前本地分支</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -u &lt;remote repo&gt;/&lt;remote branch&gt;   <span class="hljs-comment"># 將遠端儲存庫的分支加入目前本地分支</span><br></code></pre></td></tr></table></figure>
 
-<p>利用git checkout則可以切換分支。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout &lt;分支名稱&gt;<br>git checkout -b &lt;新的分支名稱&gt;<br></code></pre></td></tr></table></figure>
+<p>利用 <code>git checkout</code> 則可以切換分支，若要新建分支並切換過去，要加 <code>-b</code> 。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout &lt;分支名稱&gt;<br>git checkout -b &lt;新的分支名稱&gt;   <span class="hljs-comment"># git branch + git checkout &lt;name&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>例如我們如果想將本地端的檔案同步到遠端的main分支上：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout main<br></code></pre></td></tr></table></figure>
+<p>例如我們如果想將本地端main分支的檔案同步到遠端的main分支上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout main       <span class="hljs-comment"># 切換本地分支至main</span><br>git push github main    <span class="hljs-comment"># 推送至遠端名為github的main分支</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push &lt;遠端名稱&gt; &lt;分支名稱&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="其他常用指令"><a href="#其他常用指令" class="headerlink" title="其他常用指令"></a>其他常用指令</h3><ul>
+<li><p>更動repo或branch相關</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch &lt;分支名稱&gt;                                 <span class="hljs-comment"># 建立本地分支</span><br>git branch (-d | --delete) &lt;分支名稱&gt;                 <span class="hljs-comment"># 刪除本地分支</span><br>git branch (-D | --delete --force) &lt;分支名稱&gt;         <span class="hljs-comment"># 強制刪除本地分支</span><br>git branch (-m | --move) [&lt;舊分支&gt;] &lt;新分支&gt;          <span class="hljs-comment"># 移動／更名分支</span><br>git branch (-M | --move --force) [&lt;舊分支&gt;] &lt;新分支&gt;  <span class="hljs-comment"># 強制移動／更名分支</span><br>git push [遠端名稱] [遠端分支名稱]                      <span class="hljs-comment"># 推送至遠端分支(若upstream有指定，可省略名稱)</span><br>git push &lt;遠端名稱&gt; --delete &lt;遠端分支名稱&gt;             <span class="hljs-comment"># 刪除遠端分支</span><br>git push &lt;遠端名稱&gt; :&lt;遠端分支名稱&gt;                     <span class="hljs-comment"># 刪除遠端分支</span><br>git <span class="hljs-built_in">clone</span> &lt;遠端專案URL&gt; -b &lt;分支名稱&gt;                  <span class="hljs-comment"># 複製遠端分支</span><br>git pull &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;:&lt;本地分支名稱&gt;         <span class="hljs-comment"># git fetch + git merge</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看log相關</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span>                                <span class="hljs-comment"># 查看已提交commit</span><br>git <span class="hljs-built_in">log</span> --oneline                      <span class="hljs-comment"># 僅顯示commit標題</span><br>git <span class="hljs-built_in">log</span> --graph                        <span class="hljs-comment"># 以圖形顯示branch之間的commit</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>回復到某個commit</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset --hard [HEAD]                <span class="hljs-comment"># 回復到最新提交版本(預設為HEAD)</span><br>git reset --hard HEAD~                 <span class="hljs-comment"># 回復到前一個提交版本</span><br>git reset --hard HEAD~n                <span class="hljs-comment"># 回復到前n個提交版本</span><br>git reset --hard &lt;commit_id&gt;           <span class="hljs-comment"># 回復到指定commit</span><br>git reflog                             <span class="hljs-comment"># 查看所有變動訊息</span><br>git reset --soft [HEAD | &lt;commit_id&gt;]  <span class="hljs-comment"># 回復到提交版本但會保留工作區及暫存區內容</span><br>git revert [HEAD | &lt;commit_id&gt;]        <span class="hljs-comment"># 撤銷到提交版本但會留下commit</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>暫存目前進度切換成新任務</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git stash                  <span class="hljs-comment"># 暫存目前進度</span><br>git stash -u               <span class="hljs-comment"># 暫存目前進度(包含untracked的檔案)</span><br>git stash list             <span class="hljs-comment"># 查看stash列表</span><br>git stash apply stash@&#123;n&#125;  <span class="hljs-comment"># 把某個stash套用回來目前分支</span><br>git stash drop stash@&#123;n&#125;   <span class="hljs-comment"># 把某個stash刪除</span><br>git stash pop stash@&#123;n&#125;    <span class="hljs-comment"># 把某個stash套用回來目前分支並刪除stash(apply + drop)</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="關於git組態設定"><a href="#關於git組態設定" class="headerlink" title="關於git組態設定"></a>關於git組態設定</h4><ol>
+<li><p>git的組態設定分為三個階層，有 <code>System</code> 、 <code>Global</code> 、 <code>Local</code> ，相關的設定檔路徑如下：</p>
+<ul>
+<li><p>System: <code>/etc/gitconfig</code></p>
+</li>
+<li><p>Global: <code>$home/.gitconfig</code></p>
+</li>
+<li><p>Local: <code>$repo/.git/config</code></p>
+</li>
+</ul>
+</li>
+<li><p>常用設定如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --list [--system | --global | --<span class="hljs-built_in">local</span>]  <span class="hljs-comment"># 列出所有組態設定</span><br>git config --global user.name <span class="hljs-string">&quot;xxx&quot;</span>                <span class="hljs-comment"># 使用者名稱</span><br>git config --global user.email <span class="hljs-string">&quot;xxx@xx.com&quot;</span>        <span class="hljs-comment"># 使用者電子郵件</span><br>git config --global core.autocrlf <span class="hljs-literal">true</span>             <span class="hljs-comment"># 自動轉換CRLF</span><br>git config remote.&lt;repo name&gt;.url <span class="hljs-string">&quot;&lt;repo url&gt;&quot;</span>     <span class="hljs-comment"># 更改遠端儲存庫URL</span><br>git config core.editor <span class="hljs-string">&quot;vim&quot;</span>                       <span class="hljs-comment"># 設定編輯器為Vim</span><br></code></pre></td></tr></table></figure>
 
-<p>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push github main<br></code></pre></td></tr></table></figure>
-
-<h3 id="其他常用指令"><a href="#其他常用指令" class="headerlink" title="其他常用指令"></a>其他常用指令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch &lt;分支名稱&gt;                               <span class="hljs-comment"># 建立本地分支</span><br>git branch -d &lt;分支名稱&gt;                            <span class="hljs-comment"># 刪除本地分支</span><br>git branch &lt;-m|--move&gt; [&lt;舊分支&gt;] &lt;新分支&gt;          <span class="hljs-comment"># 移動／更名分支</span><br>git branch &lt;-M|--move --force&gt; [&lt;舊分支&gt;] &lt;新分支&gt;  <span class="hljs-comment"># 強制移動／更名分支</span><br>git push &lt;遠端名稱&gt; --delete &lt;遠端分支名稱&gt;         <span class="hljs-comment"># 刪除遠端分支</span><br>git push &lt;遠端名稱&gt; :&lt;遠端分支名稱&gt;                 <span class="hljs-comment"># 刪除遠端分支</span><br>git <span class="hljs-built_in">clone</span> &lt;遠端專案URL&gt; -b &lt;分支名稱&gt;               <span class="hljs-comment"># 複製遠端分支</span><br>git pull &lt;遠端名稱&gt; &lt;遠端分支名稱&gt;:&lt;本地分支名稱&gt;   <span class="hljs-comment"># git fetch + git merge</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="關於git組態"><a href="#關於git組態" class="headerlink" title="關於git組態"></a>關於git組態</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global core.autocrlf <span class="hljs-literal">true</span>      <span class="hljs-comment"># 自動轉換CRLF</span><br>git config --global user.name <span class="hljs-string">&quot;xxx&quot;</span>         <span class="hljs-comment"># 使用者名稱</span><br>git config --global user.email <span class="hljs-string">&quot;xxx@xx.com&quot;</span> <span class="hljs-comment"># 使用者電子郵件</span><br></code></pre></td></tr></table></figure>
-
+<ul>
+<li><p>For Gerrit:</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config remote.&lt;repo name&gt;.push <span class="hljs-string">&quot;HEAD:refs/for/&lt;branch name&gt;%r=&lt;reviewer email&gt;,cc=&lt;cc email&gt;,topic=&lt;topic&gt;&quot;</span>   <span class="hljs-comment"># 設定要推到哪個branch，以及指定reviewer、cc，或topic</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
 <h4 id="git忽略追蹤"><a href="#git忽略追蹤" class="headerlink" title="git忽略追蹤"></a>git忽略追蹤</h4><ul>
 <li>狀況一：新增過濾條件<strong>後新增的檔案</strong><ul>
 <li>符合規則 Git 就不會去追蹤。</li>
@@ -434,12 +458,12 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/GitHub/" class="category-chain-item">GitHub</a>
+  <a href="/blog/categories/Git/" class="category-chain-item">Git</a>
   
   
     <span>></span>
     
-  <a href="/blog/categories/GitHub/Git/" class="category-chain-item">Git</a>
+  <a href="/blog/categories/Git/GitHub/" class="category-chain-item">GitHub</a>
   
   
 
@@ -456,9 +480,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/GitHub/" class="print-no-link">#GitHub</a>
-      
         <a href="/blog/tags/Git/" class="print-no-link">#Git</a>
+      
+        <a href="/blog/tags/GitHub/" class="print-no-link">#GitHub</a>
       
     </div>
   
@@ -470,7 +494,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Git一二三，同步真簡單</div>
+      <div>Git一二三，版控真簡單</div>
       <div>https://weijhih1226.github.io/blog/2022/08/24/Git相關指令/</div>
     </div>
     <div class="license-meta">
