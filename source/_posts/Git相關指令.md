@@ -360,4 +360,6 @@ git push github main    # 推送至遠端名為github的main分支
 
 ## 參考資料
 
-- <https://shichia.medium.com/gitignore-忽略那些不該上傳的-git-檔案-2031ac4dc679>
+1. [.gitignore 忽略那些不該上傳的 Git 檔案 - 釋迦的碼農之路 - Medium][1]
+
+[1]: https://shichia.medium.com/gitignore-忽略那些不該上傳的-git-檔案-2031ac4dc679

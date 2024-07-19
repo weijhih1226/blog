@@ -1,12 +1,14 @@
 ---
 title: Docker常用相關指令
-categories: [Docker]
-tags: [Docker]
+categories: [Docker, Docker Compose]
+tags: [Docker, Docker Compose]
 date: 2023/03/31 17:31
-updated: 2023/03/31 17:31
+updated: 2024/07/19 17:46
 ---
 
-## Docker 指令功能全集
+## Docker
+
+### Docker 常用指令
 
 ```bash
 docker inspect <容器ID|名稱>          # 檢查某Container的狀態（進入點、執行狀態及其他詳細資料）
@@ -149,10 +151,12 @@ docker run -it --name <name> -v <host_dir>:<container_dir> <image> <command> # �
   ADD [--chown=<user>:<group>] <src>... <dest>  # 從<src>複製至image的<dest>處(支援從遠端下載，tar.gz檔自動解壓縮)
   COPY [--chown=<user>:<group>] <src>... <dest> # 從<src>複製至image的<dest>處(僅支援本地複製)
   WORKDIR <path>                                # 設定工作目錄
+  VOLUME <path>...                              # 設定要開放對接的目錄
   RUN <command>                                 # 在當前image上再執行指令並提交結果
   RUN ["executable", "param1", "param2"]        # 在當前image上再執行指令並提交結果
   CMD <command>                                 # 執行中容器提供初始指令
   CMD ["executable", "param1", "param2"]        # 2個以上CMD指令只會運行最後1個
+  EXPOSE <port>...                              # 開通容器的port
   USER <user>[:<group>]                         # 設定使用者及群組
   USER <uid>[:<gid>]                            # 設定使用者及群組
   ```
@@ -184,5 +188,93 @@ ADD run.py test.txt /           # 將local檔案複製到image裡(tar.gz檔會�
 
 RUN yum install -y wget         # 安裝這個image需要的套件
 RUN cd /                        # 切換到根目錄
+
+EXPOSE 5000                     # 開通容器的port
+
 CMD ["/run.py" , "test.txt"]    # docker run時做的指令
 ```
+
+## Docker Compose
+
+### docker-compose.yaml 格式
+
+該檔案應放置在專案目錄內，可命名為docker-compose.yml、docker-compose.yaml、compose.yml或compose.yaml。
+
+以建立一個api-service為範例：
+
+```yaml
+version: "3.8"
+services:
+  api-service:                  # service名稱
+    build: https://github.com/user/api.git  # 建立image的儲存庫或目錄(需有Dockerfile)
+    image: api-image            # 建立image的名稱
+    restart: always             # 重啟策略
+    ports:                      # port對應
+      - 5000:5000               # 容器外:內
+    volumes:                    # volume路徑對應
+      - ${LOG_PATH}:/logs       # 容器外:內
+    environment:                # 容器內環境變數設定
+      DEBUG: ${DEBUG_MODE}
+    container_name: api-service # container名稱
+```
+
+當中LOG_PATH及DEBUG_MODE的環境變數，[預設會讀取專案目錄的 `.env` 檔案裡的環境變數][^1]：
+
+```conf
+LOG_PATH=/home/user/api/logs/
+DEBUG_MODE=false
+```
+
+搭配的Dockerfile格式說明：
+
+```dockerfile
+FROM python:3.12
+
+WORKDIR /api                    # 工作目錄
+ADD . /api                      # 複製目前目錄下檔案至/api
+VOLUME /logs                    # 開放對接的目錄
+
+RUN pip install --no-cache-dir -r requirements.txt  # 安裝程式所需python套件
+
+EXPOSE 5000                     # 開通port
+
+CMD python api_server.py        # 啟動server
+```
+
+### Docker Compose 常用指令
+
+必須在有compose yaml file的目錄下才能使用以下指令：
+
+```bash
+docker compose up -d            # 運行container在背景
+docker compose up -d --env-file <PATH>  # 指定環境變數檔案跑script並運行container
+docker compose ps               # 列出active的container
+docker compose down --rmi all   # 停止目前的container並移除相關image
+docker compose config           # 列出docker compose的組態(yaml)
+```
+
+對應Docker指令：
+
+- `docker compose down --rmi all`
+
+  ```bash
+  docker stop <container>
+  docker rmi <image>
+  ```
+
+- 以上述範例說明 `docker compose up -d`
+
+  ```bash
+  docker build -t api-image https://github.com/user/api.git
+  docker run --rm -itd --name api-service --restart always -v $LOG_PATH:/logs -p 5000:5000 api-image
+  ```
+
+  如有多個volume可以增加tag `-v` ，同理有多個port也可以增加tag `-p`。
+
+---
+
+## 參考資料
+
+1. [Set, use, and manage variables in a Compose file with interpolation | Docker Docs][^1]
+
+[^1]: [DockerDocs](https://docs.docker.com/compose/environment-variables/variable-interpolation/)
