@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2.8k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          22 分鐘
+          24 分鐘
         
       </span>
     
@@ -321,11 +321,19 @@
 
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs console">conda list                                # 列出當下工作環境下所有套件<br>conda list -n &lt;環境名稱&gt;                  # 列出該工作環境下所有套件<br>conda list [正規表示式]                   # 列出當下工作環境下部分套件<br>conda list -e &gt; &lt;檔案名稱&gt;                # 輸出給conda create --file<br>conda update &lt;套件名稱&gt;                   # 更新指定套件<br>conda update --all                        # 更新全部套件<br>conda remove &lt;套件名稱&gt;                   # 移除當下工作環境下之套件<br>conda remove -n &lt;環境名稱&gt; &lt;套件名稱&gt;     # 移除指定工作環境下之套件<br></code></pre></td></tr></table></figure>
 
-<h3 id="虛擬工作環境相關"><a href="#虛擬工作環境相關" class="headerlink" title="虛擬工作環境相關"></a>虛擬工作環境相關</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs console">conda create -n &lt;環境名稱&gt; &lt;套件名稱=版本&gt;        # 建立新的工作環境<br>conda remove -n &lt;環境名稱&gt; &lt;套件名稱&gt;             # 移除指定工作環境下之套件<br>conda remove -n &lt;環境名稱&gt; --all                  # 移除指定工作環境<br>conda rename -n &lt;原環境名稱&gt; &lt;新環境名稱&gt;         # 更名指定工作環境<br>conda env list                                    # 列出有哪些工作環境<br>conda env export -n &lt;環境名稱&gt; -f &lt;環境名稱&gt;.yml  # 輸出該工作環境套件列表<br>conda activate [環境名稱]                         # 啟動工作環境，未指定預設為base<br>conda deactivate                                  # 停用工作環境<br></code></pre></td></tr></table></figure>
+<h3 id="虛擬工作環境相關"><a href="#虛擬工作環境相關" class="headerlink" title="虛擬工作環境相關"></a>虛擬工作環境相關</h3><ul>
+<li><p>透過conda方式：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs console">conda create -n &lt;環境名稱&gt; &lt;套件名稱=版本&gt;        # 建立新的工作環境<br>conda remove -n &lt;環境名稱&gt; &lt;套件名稱&gt;             # 移除指定工作環境下之套件<br>conda remove -n &lt;環境名稱&gt; --all                  # 移除指定工作環境<br>conda rename -n &lt;原環境名稱&gt; &lt;新環境名稱&gt;         # 更名指定工作環境<br>conda env list                                    # 列出有哪些工作環境<br>conda env export -n &lt;環境名稱&gt; -f &lt;環境名稱&gt;.yml  # 輸出該工作環境套件列表<br>conda activate [環境名稱]                         # 啟動工作環境，未指定預設為base<br>conda deactivate                                  # 停用工作環境<br></code></pre></td></tr></table></figure>
 
 <p>建立新的工作環境，可自行指定安裝某Python版本，例如：</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console">conda create -n my_env python=3.9<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>透過venv方式：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs console">python3 -m venv env<br>source env/bin/activate<br>pip install --upgrade pip<br>pip install -r requirements.txt<br><br></code></pre></td></tr></table></figure>
 
+<p>或可直接安裝別人打包好的.tar.gz檔：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs console">pip install test-0.1.20240105.tar.gz<br></code></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="設定proxy"><a href="#設定proxy" class="headerlink" title="設定proxy"></a>設定proxy</h2><p>由於氣象局內有專用Proxy設定，如要順利連網下載安裝、更新，必須使用以下設定：</p>
 <h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs console">export http_proxy=http://proxy.cwb.gov.tw:8888<br>export https_proxy=http://proxy.cwb.gov.tw:8888<br></code></pre></td></tr></table></figure>
 
