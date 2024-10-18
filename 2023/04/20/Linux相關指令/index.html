@@ -24,7 +24,7 @@
 <meta property="og:description" content="Linux 指令功能全集系統啟動、管理、監看Systemctl：管理systemd服務管理Systemd的各種服務，可利用 systemctl 來操作。 12345678910111213systemctl 操作指令 服務名稱[.service]systemctl                           # 查詢目前運行中服務systemctl -n --lines&#x3D;整數">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-04-20T09:04:00.000Z">
-<meta property="article:modified_time" content="2023-07-07T04:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-18T07:30:00.000Z">
 <meta property="article:author" content="Satoshi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          4k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          35 分鐘
+          34 分鐘
         
       </span>
     
@@ -283,7 +283,7 @@
               <p class="note note-info">
                 
                   
-                    本文最後更新於：2023年7月7日 12:00
+                    本文最後更新於：2024年10月18日 15:30
                   
                 
               </p>
@@ -291,7 +291,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Linux-指令功能全集"><a href="#Linux-指令功能全集" class="headerlink" title="Linux 指令功能全集"></a>Linux 指令功能全集</h2><h3 id="系統啟動、管理、監看"><a href="#系統啟動、管理、監看" class="headerlink" title="系統啟動、管理、監看"></a>系統啟動、管理、監看</h3><h4 id="Systemctl：管理systemd服務"><a href="#Systemctl：管理systemd服務" class="headerlink" title="Systemctl：管理systemd服務"></a>Systemctl：管理systemd服務</h4><p>管理Systemd的各種服務，可利用 <code>systemctl</code> 來操作。</p>
+                <h2 id="Linux-指令功能全集"><a href="#Linux-指令功能全集" class="headerlink" title="Linux 指令功能全集"></a>Linux 指令功能全集</h2><h3 id="系統啟動、管理、監看"><a href="#系統啟動、管理、監看" class="headerlink" title="系統啟動、管理、監看"></a>系統啟動、管理、監看</h3><h4 id="Systemctl：管理systemd服務"><a href="#Systemctl：管理systemd服務" class="headerlink" title="Systemctl：管理systemd服務"></a>Systemctl：管理systemd服務</h4><p>管理Systemd的各種服務，<a target="_blank" rel="noopener" href="https://magiclen.org/linux-init-application-service/">可利用 <code>systemctl</code> 來操作</a>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl 操作指令 服務名稱[.service]<br>systemctl                           <span class="hljs-comment"># 查詢目前運行中服務</span><br>systemctl -n --lines=整數           <span class="hljs-comment"># 顯示列數</span><br>systemctl start &lt;服務名稱&gt;          <span class="hljs-comment"># 啟動服務</span><br>systemctl stop &lt;服務名稱&gt;           <span class="hljs-comment"># 停止服務</span><br>systemctl restart &lt;服務名稱&gt;        <span class="hljs-comment"># 重新啟動服務</span><br>systemctl status &lt;服務名稱&gt;         <span class="hljs-comment"># 顯示服務狀態</span><br>systemctl reload &lt;服務名稱&gt;         <span class="hljs-comment"># 重新載入服務配置(.conf)</span><br>systemctl daemon-reload &lt;服務名稱&gt;  <span class="hljs-comment"># 重新載入systemd服務配置(.service)</span><br>systemctl <span class="hljs-built_in">enable</span> &lt;服務名稱&gt;         <span class="hljs-comment"># 開機自動啟動服務</span><br>systemctl <span class="hljs-built_in">disable</span> &lt;服務名稱&gt;        <span class="hljs-comment"># 開機不自動啟動服務</span><br>systemctl is-active &lt;服務名稱&gt;      <span class="hljs-comment"># 目前是否執行服務</span><br>systemctl is-enabled &lt;服務名稱&gt;     <span class="hljs-comment"># 開機是否自動啟動服務</span><br></code></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl list-unit-files --<span class="hljs-built_in">type</span> service --all   <span class="hljs-comment"># 列出所有服務</span><br></code></pre></td></tr></table></figure>
@@ -354,17 +354,20 @@
 <p>重新啟動bash配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bash_profile<br></code></pre></td></tr></table></figure>
 
-<h3 id="更換Shell"><a href="#更換Shell" class="headerlink" title="更換Shell"></a>更換Shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install fish<br>curl -L https://get.oh-my.fish | fish<br>omf install bobthefish<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">printf</span> <span class="hljs-string">&quot;%s\n&quot;</span> <span class="hljs-variable">$SHELL</span>    <span class="hljs-comment"># 印出當前shell</span><br><span class="hljs-built_in">cat</span> /etc/shells         <span class="hljs-comment"># 列出所有可用shell</span><br>yum install zsh<br>chsh -s $(<span class="hljs-built_in">which</span> zsh) $(<span class="hljs-built_in">whoami</span>)<br><br>git config --global core.autocrlf <span class="hljs-literal">false</span>  <span class="hljs-comment"># github儲存庫為Unix格式，若要離線安裝下載至Windows再上傳至Linux server，須取消自動轉換CRLF</span><br>git <span class="hljs-built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh     <span class="hljs-comment"># 下載Oh-my-zsh獲得更多zsh樣式</span><br><br><span class="hljs-built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc<br></code></pre></td></tr></table></figure>
-
+<h3 id="更換Shell"><a href="#更換Shell" class="headerlink" title="更換Shell"></a>更換Shell</h3><ul>
+<li><p>更換成fish(<a target="_blank" rel="noopener" href="https://medium.com/tuannguyendotme/set-up-the-fish-shell-on-mac-step-by-step-6a77bcb2687c">參考步驟</a>)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install fish<br>curl -L https://get.oh-my.fish | fish<br>omf install bobthefish<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>更換成zsh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">printf</span> <span class="hljs-string">&quot;%s\n&quot;</span> <span class="hljs-variable">$SHELL</span>    <span class="hljs-comment"># 印出當前shell</span><br><span class="hljs-built_in">cat</span> /etc/shells         <span class="hljs-comment"># 列出所有可用shell</span><br>yum install zsh<br>chsh -s $(<span class="hljs-built_in">which</span> zsh) $(<span class="hljs-built_in">whoami</span>)<br><br>git config --global core.autocrlf <span class="hljs-literal">false</span>  <span class="hljs-comment"># github儲存庫為Unix格式，若要離線安裝下載至Windows再上傳至Linux server，須取消自動轉換CRLF</span><br>git <span class="hljs-built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh     <span class="hljs-comment"># 下載Oh-my-zsh獲得更多zsh樣式</span><br><br><span class="hljs-built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc<br></code></pre></td></tr></table></figure></li>
+</ul>
 <p>修改主題，例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># ZSH_THEME=&quot;robbyrussell&quot;</span><br>ZSH_THEME=<span class="hljs-string">&quot;agnoster&quot;</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="效能分析"><a href="#效能分析" class="headerlink" title="效能分析"></a>效能分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">top           <span class="hljs-comment"># 查看CPU、執行緒狀態</span><br><span class="hljs-built_in">uptime</span>        <span class="hljs-comment"># 僅顯示目前時間、主機開機時間、登入使用者數、負載情況</span><br>w             <span class="hljs-comment"># 顯示目前登入使用者相關資訊</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>top按鍵功能<ul>
+<li><a target="_blank" rel="noopener" href="https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A">top按鍵功能</a><ul>
 <li>1：顯示單一&#x2F;多cpu使用情形切換</li>
 </ul>
 </li>
@@ -481,11 +484,11 @@
 </li>
 </ul>
 <hr>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://magiclen.org/linux-init-application-service/">https://magiclen.org/linux-init-application-service/</a></li>
-<li><a target="_blank" rel="noopener" href="https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A">https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.xuite.net/zerofirst/blog/147985077">https://blog.xuite.net/zerofirst/blog/147985077</a></li>
-</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://medium.com/tuannguyendotme/set-up-the-fish-shell-on-mac-step-by-step-6a77bcb2687c">Set up the fish shell on Mac — step by step</a></li>
+<li><a target="_blank" rel="noopener" href="https://magiclen.org/linux-init-application-service/">如何在Linux上將應用程式變成開機可自動執行，且保證在崩潰之後還能自動重啟的服務？</a></li>
+<li><a target="_blank" rel="noopener" href="https://david50.pixnet.net/blog/post/45252072-%5B%E7%AD%86%E8%A8%98%5Dlinux---top%E8%B3%87%E8%A8%8A">[筆記]Linux - top資訊及參數說明</a></li>
+</ol>
 
                 
               </div>
