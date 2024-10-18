@@ -3,7 +3,7 @@ title: 利用「Hexo」架設個人部落格
 categories: [GitHub , Hexo]
 tags: [GitHub , Hexo , Node.js]
 date: 2022/07/21 14:25
-updated: 2022/07/25 14:52
+updated: 2024/10/18 11:30
 ---
 
 **自**從進入職場、學習不同的程式語言或工具以來，發現累積的說明文件愈來愈多，但卻又沒有一套系統性的整理，遇到問題一時要找就開始有點麻煩了😓另外，很久也沒藉由寫點東西，來反思自己的生活了。希望可以經營一個可以累積過往的程式經驗，又可順便記錄生活種種點點滴滴的部落格，而且重點是要方便記錄跟找尋！於是找到了Hexo。「[Hexo](https://hexo.io/zh-tw/)」是一個讓你很容易上手部署自己個人部落格，以及發佈程式類說明文章的套件工具。而且[主題](https://hexo.io/themes/)及[外掛](https://hexo.io/plugins/)超多任你選擇，只需要懂得一些語法架構，即可做出美美的、與眾不同的網頁！
@@ -78,19 +78,19 @@ git clone https://github.com/使用者名稱/使用者名稱.github.io
 - 按照當前設定檔，產生對應的靜態網頁：（可省略）
 
     ``` bash
-    hexo generate
+    hexo generate   # hexo g
     ```
 
 - 在本地端產生網頁，確認當前設計（預設127.0.0.1:4000）：（可省略）
 
     ``` bash
-    hexo server
+    hexo server     # hexo s
     ```
 
 - 將目前本地端靜態網頁自動部署至GitHub Pages：
 
     ``` bash
-    hexo deploy
+    hexo deploy     # hexo d
     ```
 
 ### Hexo 目錄架構

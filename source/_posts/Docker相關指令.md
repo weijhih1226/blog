@@ -3,7 +3,7 @@ title: Docker常用相關指令
 categories: [Docker, Docker Compose]
 tags: [Docker, Docker Compose]
 date: 2023/03/31 17:31
-updated: 2024/07/19 17:46
+updated: 2024/10/18 11:30
 ---
 
 ## Docker
@@ -218,7 +218,7 @@ services:
     container_name: api-service # container名稱
 ```
 
-當中LOG_PATH及DEBUG_MODE的環境變數，[預設會讀取專案目錄的 `.env` 檔案裡的環境變數][^1]：
+當中LOG_PATH及DEBUG_MODE的環境變數，[預設會讀取專案目錄的 `.env` 檔案裡的環境變數][1]：
 
 ```conf
 LOG_PATH=/home/user/api/logs/
@@ -266,7 +266,11 @@ docker compose config           # 列出docker compose的組態(yaml)
 
   ```bash
   docker build -t api-image https://github.com/user/api.git
-  docker run --rm -itd --name api-service --restart always -v $LOG_PATH:/logs -p 5000:5000 api-image
+  docker run --rm -itd \
+  --name api-service \
+  --restart always \
+  -v $LOG_PATH:/logs \
+  -p 5000:5000 api-image
   ```
 
   如有多個volume可以增加tag `-v` ，同理有多個port也可以增加tag `-p`。
@@ -275,6 +279,6 @@ docker compose config           # 列出docker compose的組態(yaml)
 
 ## 參考資料
 
-1. [Set, use, and manage variables in a Compose file with interpolation | Docker Docs][^1]
+1. [Set, use, and manage variables in a Compose file with interpolation | Docker Docs][1]
 
-[^1]: [DockerDocs](https://docs.docker.com/compose/environment-variables/variable-interpolation/)
+[1]: https://docs.docker.com/compose/environment-variables/variable-interpolation/
