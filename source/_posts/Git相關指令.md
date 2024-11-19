@@ -3,7 +3,7 @@ title: Git一二三，版控真簡單
 categories: [Git, GitHub]
 tags: [Git, GitHub]
 date: 2022/08/24 14:07
-updated: 2024/07/19 14:00
+updated: 2024/11/19 11:00
 ---
 
 Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它。因此，對於初學者而言，在了解Git指令之前，先要有 `local` （本地）、 `remote` （遠端） `repository` （儲存庫）及各自的 `branch` （分支）概念，還有就是多跟同事在實務上運用練習，才會更快上手。
@@ -323,6 +323,7 @@ git push github main    # 推送至遠端名為github的main分支
    git config --global core.autocrlf true             # 自動轉換CRLF
    git config remote.<repo name>.url "<repo url>"     # 更改遠端儲存庫URL
    git config core.editor "vim"                       # 設定編輯器為Vim
+   git config push.default [upstream|current|simple]  # 預設推送到[upstream|同名分支|同名分支但會拒絕推送到不同名分支]
    ```
 
    - For Gerrit:
