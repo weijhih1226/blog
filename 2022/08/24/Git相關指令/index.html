@@ -24,10 +24,10 @@
 <meta property="og:description" content="Git是一個多工團隊協作版控的好用工具，雖然一開始的概念有點小複雜，我也是花了好一陣子才漸漸搞懂它。因此，對於初學者而言，在了解Git指令之前，先要有 local （本地）、 remote （遠端） repository （儲存庫）及各自的 branch （分支）概念，還有就是多跟同事在實務上運用練習，才會更快上手。 Git指令全集概念 初始化git工作目錄 狀態：未初始化 1git init">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-08-24T06:07:00.000Z">
-<meta property="article:modified_time" content="2024-07-19T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-19T03:00:00.000Z">
 <meta property="article:author" content="Satoshi">
-<meta property="article:tag" content="Git">
 <meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.1k 字
+          7.2k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          59 分鐘
+          60 分鐘
         
       </span>
     
@@ -284,7 +284,7 @@
               <p class="note note-info">
                 
                   
-                    本文最後更新於：2024年7月19日 14:00
+                    本文最後更新於：2024年11月19日 11:00
                   
                 
               </p>
@@ -409,7 +409,7 @@
 </ul>
 </li>
 <li><p>常用設定如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --list [--system | --global | --<span class="hljs-built_in">local</span>]  <span class="hljs-comment"># 列出所有組態設定</span><br>git config --global user.name <span class="hljs-string">&quot;xxx&quot;</span>                <span class="hljs-comment"># 使用者名稱</span><br>git config --global user.email <span class="hljs-string">&quot;xxx@xx.com&quot;</span>        <span class="hljs-comment"># 使用者電子郵件</span><br>git config --global core.autocrlf <span class="hljs-literal">true</span>             <span class="hljs-comment"># 自動轉換CRLF</span><br>git config remote.&lt;repo name&gt;.url <span class="hljs-string">&quot;&lt;repo url&gt;&quot;</span>     <span class="hljs-comment"># 更改遠端儲存庫URL</span><br>git config core.editor <span class="hljs-string">&quot;vim&quot;</span>                       <span class="hljs-comment"># 設定編輯器為Vim</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --list [--system | --global | --<span class="hljs-built_in">local</span>]  <span class="hljs-comment"># 列出所有組態設定</span><br>git config --global user.name <span class="hljs-string">&quot;xxx&quot;</span>                <span class="hljs-comment"># 使用者名稱</span><br>git config --global user.email <span class="hljs-string">&quot;xxx@xx.com&quot;</span>        <span class="hljs-comment"># 使用者電子郵件</span><br>git config --global core.autocrlf <span class="hljs-literal">true</span>             <span class="hljs-comment"># 自動轉換CRLF</span><br>git config remote.&lt;repo name&gt;.url <span class="hljs-string">&quot;&lt;repo url&gt;&quot;</span>     <span class="hljs-comment"># 更改遠端儲存庫URL</span><br>git config core.editor <span class="hljs-string">&quot;vim&quot;</span>                       <span class="hljs-comment"># 設定編輯器為Vim</span><br>git config push.default [upstream|current|simple]  <span class="hljs-comment"># 預設推送到[upstream|同名分支|同名分支但會拒絕推送到不同名分支]</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><p>For Gerrit:</p>
@@ -480,9 +480,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/Git/" class="print-no-link">#Git</a>
-      
         <a href="/blog/tags/GitHub/" class="print-no-link">#GitHub</a>
+      
+        <a href="/blog/tags/Git/" class="print-no-link">#Git</a>
       
     </div>
   
